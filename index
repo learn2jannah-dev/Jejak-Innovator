@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Modul kendiri Design Thinking + AI untuk pelajar sekolah menengah: tema Kelas Selesa.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Jejak Inovator</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Baloo+2:wght@800&display=swap">
+<style>
+/* Layout: clay-style learning app. Peta (journey map) with a water "pipe" that fills per unit; each unit is a 4-step stepper (Teori → Game → Misi → Lencana). Single, deliberate light look. */
+:root{
+  color-scheme:light;
+  --bg:#E6F3FA; --bg2:#D2EAF6; --card:#FFFFFF; --ink:#0F2F45; --muted:#46667A; --line:#C6E0ED;
+  --primary:#1672C4; --primary-d:#0E5596; --aqua:#22A9B8; --aqua-soft:#D8F3F5;
+  --accent:#F07B1D; --accent-d:#BF5C0C; --on-accent:#2A1300; --sun:#FFC63A; --sun-soft:#FFF2CC;
+  --good:#1B8E59; --good-soft:#DDF5E8; --bad:#C93F2A; --bad-soft:#FDE3DE;
+  --p0:#5B6CD6; --p1:#DE4F78; --p2:#D98A06; --p3:#E8A90A; --p4:#13998F; --p5:#1672C4; --p6:#F07B1D;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-lg:26px; --r:18px; --r-sm:12px;
+  --clay:8px 10px 22px rgba(22,90,140,.14), inset -3px -4px 8px rgba(15,47,69,.05), inset 3px 3px 6px rgba(255,255,255,.9);
+  --clay-sm:4px 6px 12px rgba(22,90,140,.12), inset 2px 2px 4px rgba(255,255,255,.9);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;background-image:radial-gradient(circle at 12% 8%,rgba(34,169,184,.14) 0 180px,transparent 181px),radial-gradient(circle at 92% 30%,rgba(255,198,58,.18) 0 140px,transparent 141px)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0;color:var(--ink)}
+p{margin:0}
+a{color:var(--primary-d);font-weight:500}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+
+/* top bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(230,243,250,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
+.bar-in{max-width:900px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:800;font-size:1.25rem;background:none;border:0;padding:4px 0;min-height:44px}
+.brand svg{width:30px;height:30px}
+.spacer{flex:1}
+.navbtn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:99px;border:2px solid transparent;background:transparent;font-weight:600;font-size:.9rem;color:var(--muted);transition:background .2s,color .2s}
+.navbtn[aria-current="page"]{background:var(--card);color:var(--primary-d);border-color:var(--line);box-shadow:var(--clay-sm)}
+.xp{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:var(--sun-soft);color:#7A5200;font-weight:700;font-size:.9rem;font-variant-numeric:tabular-nums;border:2px solid #F5DC8F}
+.xp svg{width:18px;height:18px;stroke:#B07A00}
+@media (max-width:560px){.navbtn span.lbl{display:none}.brand .bt{display:none}}
+
+.wrap{max-width:900px;margin:0 auto;padding-block:24px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.view{display:grid;gap:22px;animation:rise .35s ease-out}
+@keyframes rise{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* clay primitives */
+.card{background:var(--card);border-radius:var(--r-lg);box-shadow:var(--clay);border:2px solid #fff;padding:22px;display:grid;gap:14px;min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:16px;border:0;font-weight:700;font-size:1rem;background:var(--primary);color:#fff;box-shadow:0 5px 0 var(--primary-d);transition:transform .15s ease-out,box-shadow .15s ease-out;position:relative;top:0}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--primary-d)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--primary-d)}
+.btn.accent{background:var(--accent);color:var(--on-accent);box-shadow:0 5px 0 var(--accent-d)}
+.btn.accent:hover{box-shadow:0 7px 0 var(--accent-d)}
+.btn.accent:active{box-shadow:0 1px 0 var(--accent-d)}
+.btn.ghost{background:var(--card);color:var(--ink);box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+.btn.ghost:active{box-shadow:0 0 0 var(--line)}
+.btn.sm{min-height:44px;padding:0 16px;font-size:.92rem}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.eyebrow{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.lead{color:var(--muted);max-width:62ch}
+.note{font-size:.88rem;color:var(--muted)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:center;background:linear-gradient(135deg,#1672C4,#22A9B8);color:#fff;border-radius:var(--r-lg);padding:28px;box-shadow:var(--clay);position:relative;overflow:hidden}
+.hero h1{color:#fff;font-size:clamp(2.2rem,6vw,3.4rem);font-weight:800}
+.hero p{color:#E4F6FB;max-width:44ch}
+.hero .eyebrow{color:#BFEAF3}
+.hero-txt{display:grid;gap:12px;min-width:0}
+.hero .btn.accent{justify-self:start}
+.hero-art{display:grid;place-items:center}
+.hero-art svg{width:min(220px,100%);height:auto}
+.wave{position:absolute;inset:auto 0 0 0;height:36px;opacity:.25}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.hero-art{order:-1}.hero-art svg{width:140px}}
+.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:var(--card);border-radius:var(--r);box-shadow:var(--clay-sm);border:2px solid #fff;padding:14px;display:grid;gap:2px;text-align:center}
+.stat b{font-family:var(--f-display);font-size:1.7rem;font-weight:800;color:var(--primary-d);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:.8rem;color:var(--muted)}
+
+/* journey map */
+.map{position:relative;display:grid;gap:14px;padding-left:64px}
+.pipe{position:absolute;left:25px;top:28px;bottom:28px;width:12px;border-radius:99px;background:var(--bg2);border:2px solid var(--line);overflow:hidden}
+.pipe i{position:absolute;left:0;right:0;top:0;background:linear-gradient(180deg,var(--aqua),var(--primary));border-radius:99px;transition:height .8s ease}
+.station{position:relative;display:flex;align-items:center;gap:14px;text-align:left;width:100%;background:var(--card);border:2px solid #fff;border-radius:var(--r);box-shadow:var(--clay-sm);padding:14px 16px;min-height:76px;transition:transform .2s ease-out}
+.station:not(:disabled):hover{transform:translateX(4px)}
+.station:disabled{cursor:not-allowed;background:#F1F7FA;box-shadow:none;border-color:var(--line)}
+.node{position:absolute;left:-58px;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;border:4px solid var(--bg);box-shadow:0 4px 0 rgba(15,47,69,.15)}
+.node svg{width:22px;height:22px}
+.station:disabled .node{background:#B7CCD8!important}
+.st-txt{flex:1;min-width:0;display:grid;gap:2px}
+.st-txt b{font-family:var(--f-display);font-size:1.15rem;font-weight:700}
+.st-txt span{font-size:.86rem;color:var(--muted)}
+.st-state{flex:0 0 auto;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:99px}
+.st-state.done{background:var(--good-soft);color:var(--good)}
+.st-state.now{background:var(--sun-soft);color:#7A5200}
+.st-state.lock{background:var(--bg2);color:var(--muted)}
+
+/* unit header + stepper */
+.uhead{display:flex;gap:16px;align-items:center}
+.ubadge{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;color:#fff;flex:0 0 auto;box-shadow:0 5px 0 rgba(15,47,69,.18)}
+.ubadge svg{width:32px;height:32px}
+.uhead h2{font-size:clamp(1.6rem,4.5vw,2.2rem);font-weight:800}
+.steps{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px}
+.step{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:99px;border:2px solid var(--line);background:var(--card);font-weight:600;font-size:.88rem;white-space:nowrap;color:var(--muted);transition:all .2s}
+.step .dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--bg2);font-size:.75rem;font-weight:700;color:var(--muted)}
+.step[aria-current="step"]{border-color:var(--primary);color:var(--primary-d);box-shadow:var(--clay-sm)}
+.step[aria-current="step"] .dot{background:var(--primary);color:#fff}
+.step.ok .dot{background:var(--good);color:#fff}
+
+/* mascot tip */
+.tip{display:flex;gap:12px;align-items:flex-start}
+.tip svg.m{width:54px;height:54px;flex:0 0 auto}
+.bubble{background:var(--card);border:2px solid var(--line);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.92rem;box-shadow:var(--clay-sm);min-width:0}
+.bubble b{color:var(--primary-d)}
+
+/* theory */
+.theory{display:grid;gap:14px;max-width:70ch}
+.theory ul{margin:0;padding-left:22px;display:grid;gap:6px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{border-radius:var(--r-sm);padding:12px 14px;background:var(--bg);border:2px solid var(--line);display:grid;gap:2px}
+.tile b{font-family:var(--f-display);font-size:1.15rem;color:var(--primary-d)}
+.tile span{font-size:.86rem;color:var(--muted)}
+.formula{font-family:var(--f-display);font-size:1.15rem;font-weight:600;padding:14px 16px;border-radius:var(--r-sm);background:var(--aqua-soft);border:2px dashed var(--aqua)}
+
+/* games */
+.q{display:grid;gap:10px;padding:14px;border-radius:var(--r-sm);background:var(--bg);border:2px solid transparent;transition:border-color .2s}
+.q.right{border-color:var(--good);background:var(--good-soft)}
+.q.wrong{border-color:var(--bad);background:var(--bad-soft);animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.q-t{font-weight:500}
+.qs{display:grid;gap:10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:44px;min-width:44px;padding:0 16px;border-radius:14px;border:2px solid var(--line);background:var(--card);font-weight:600;font-size:.92rem;box-shadow:0 3px 0 var(--line);transition:transform .12s,background .15s}
+.opt:active{transform:translateY(3px);box-shadow:none}
+.opt[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 3px 0 var(--primary-d)}
+.result{padding:12px 16px;border-radius:var(--r-sm);font-weight:600;display:flex;gap:10px;align-items:center}
+.result.ok{background:var(--good-soft);color:var(--good)}
+.result.no{background:var(--bad-soft);color:var(--bad)}
+.timer{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:2rem;font-weight:800;color:var(--primary-d);font-variant-numeric:tabular-nums;background:conic-gradient(var(--aqua) var(--pct,100%),var(--bg2) 0);position:relative}
+.timer::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--card)}
+.timer span{position:relative;z-index:1}
+.ideas{display:flex;flex-wrap:wrap;gap:8px}
+.idea{background:var(--sun-soft);border:2px solid #F5DC8F;border-radius:12px;padding:6px 12px;font-size:.9rem;animation:pop .3s ease-out}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.meter{height:16px;border-radius:99px;background:var(--bg2);overflow:hidden;border:2px solid var(--line)}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--aqua),var(--good));transition:width .35s}
+.sample{font-size:.95rem;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);border:2px dashed var(--line)}
+
+/* forms */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+label.f{display:grid;gap:6px;font-size:.9rem;font-weight:600;min-width:0}
+label.f small{font-weight:400;color:var(--muted)}
+input[type=text],textarea,select{width:100%;min-height:48px;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 14px;font-size:1rem;transition:border-color .2s,box-shadow .2s}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 4px rgba(22,114,196,.15);background:#fff}
+input[type=file]{font-size:.9rem}
+.persona{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.pcard{text-align:left;border:2px solid var(--line);background:var(--card);border-radius:var(--r);padding:14px;display:grid;gap:6px;box-shadow:0 4px 0 var(--line);transition:transform .15s}
+.pcard:hover{transform:translateY(-2px)}
+.pcard b{font-family:var(--f-display);font-size:1.15rem}
+.pcard span{font-size:.85rem;color:var(--muted)}
+.pcard .av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.pcard[aria-pressed="true"]{border-color:var(--primary);background:#EAF4FD;box-shadow:0 4px 0 var(--primary)}
+.pdetail{display:grid;gap:12px;padding:16px;border-radius:16px;border:1px solid var(--line);background:#F5FAFC;border-left:5px solid var(--pc,var(--primary))}
+.pdetail h3{font-size:1.2rem}
+.pdetail .av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:0 0 auto}
+.pdetail dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pdetail dt{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.pdetail dd{margin:2px 0 0;font-size:.92rem}
+.statement{font-family:var(--f-display);font-size:1.2rem;font-weight:600;padding:14px 16px;border-radius:var(--r-sm);background:var(--aqua-soft);border:2px solid var(--aqua)}
+.sub{font-family:var(--f-display);font-size:1.15rem;font-weight:700;display:flex;gap:8px;align-items:center}
+.sub .num{width:30px;height:30px;border-radius:10px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:.95rem}
+
+/* prompt box */
+.prompt{border-radius:var(--r);padding:16px;display:grid;gap:12px;background:#0F2F45;color:#E3F1F8}
+.prompt-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.prompt-h b{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#8FD3E0;display:flex;gap:8px;align-items:center}
+.prompt-t{white-space:pre-wrap;font-size:.92rem;margin:0;overflow-wrap:anywhere;line-height:1.55}
+.prompt-t mark{background:#FFC63A;color:#2A1300;border-radius:5px;padding:0 4px;font-weight:600}
+.prompt textarea{background:#fff;color:var(--ink)}
+.ai-links{font-size:.82rem;color:#A9C7D6}
+.ai-links a{color:#FFD56B}
+.copied{font-size:.85rem;font-weight:600;color:#7EE2B0}
+
+.pad{background:#fff;border:2px solid var(--line);border-radius:var(--r);width:100%;max-width:100%;aspect-ratio:3/2;touch-action:none;display:block;cursor:crosshair;box-shadow:inset 0 2px 6px rgba(15,47,69,.06)}
+.upimg{max-width:100%;border-radius:var(--r);border:2px solid var(--line)}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700}
+
+/* finish */
+.missing{display:grid;gap:6px}
+.miss-item{display:flex;gap:8px;align-items:center;font-size:.92rem;color:var(--bad)}
+.medal{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:0 0 auto;box-shadow:0 4px 0 rgba(15,47,69,.18),inset 0 -4px 0 rgba(0,0,0,.12);border:3px solid #fff}
+.medal svg{width:26px;height:26px}
+.medal.off{background:#C9D9E2!important}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:20;background:rgba(15,47,69,.5);display:grid;place-items:center;padding:20px}
+.modal-c{background:var(--card);border-radius:28px;padding:28px 24px;max-width:380px;width:100%;text-align:center;display:grid;gap:12px;justify-items:center;box-shadow:0 20px 50px rgba(15,47,69,.3);animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+.modal-c .medal{width:96px;height:96px}
+.modal-c .medal svg{width:44px;height:44px}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:21}
+
+/* portfolio */
+.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px}
+.bdg{display:grid;justify-items:center;gap:6px;text-align:center;font-size:.85rem;font-weight:600}
+.pf dl{margin:0;display:grid;gap:12px}
+.pf dt{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.pf dd{margin:2px 0 0;overflow-wrap:anywhere}
+.imgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.cert{position:relative;border-radius:var(--r-lg);padding:34px 22px;text-align:center;display:grid;gap:10px;background:#fff;border:6px solid var(--sun);box-shadow:var(--clay),inset 0 0 0 4px #fff,inset 0 0 0 6px var(--line);overflow:hidden}
+.cert .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,2.8rem);font-weight:800;color:var(--primary-d);overflow-wrap:anywhere;line-height:1.1}
+.cert .seal{justify-self:center}
+.cert small{color:var(--muted)}
+table.score{width:100%;border-collapse:collapse;font-size:.92rem;font-variant-numeric:tabular-nums}table.score th,table.score td{text-align:left;padding:10px 12px;border-bottom:2px solid var(--line)}table.score th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}table.score td:last-child,table.score th:last-child{text-align:right;font-weight:600}table.score tfoot td{font-family:var(--f-display);font-size:1.15rem;font-weight:800;color:var(--primary-d);border-bottom:0}
+.confirm{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px;border-radius:var(--r-sm);background:var(--bad-soft)}
+.foot{margin-top:32px;font-size:.82rem;color:var(--muted);text-align:center}
+/* ---- layout v4: top bar + sidebar Perjalanan + hero + stepper ---- */
+:root{--bg:#EEF6FA;--line:#D6E6EE;--primary:#0E7AA6;--primary-d:#0A5D80;--navy:#2E5577;
+  --clay:0 8px 28px rgba(15,60,90,.08);--clay-sm:0 3px 12px rgba(15,60,90,.07)}
+body{background:linear-gradient(180deg,#F3F9FC 0%,#E6F2F8 100%) fixed;background-color:var(--bg)}
+h1,h2,h3{letter-spacing:-.01em}
+.card{border:1px solid var(--line);border-radius:22px;box-shadow:var(--clay);padding:24px}
+.btn{border-radius:14px;background:linear-gradient(135deg,#0E7AA6,#14A0B8);box-shadow:0 6px 16px rgba(14,122,166,.25)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(14,122,166,.3)}
+.btn:active{transform:translateY(1px);box-shadow:0 3px 8px rgba(14,122,166,.25)}
+.btn:disabled{background:linear-gradient(135deg,#7FC3D7,#9ED8E2);box-shadow:none;opacity:1;color:#fff}
+.btn.accent{background:linear-gradient(135deg,#F07B1D,#F59A3C);box-shadow:0 6px 16px rgba(240,123,29,.28)}
+.btn.ghost{background:#fff;border:1px solid var(--line);box-shadow:var(--clay-sm)}
+.bar{background:rgba(255,255,255,.85);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1200px;gap:28px;padding-block:12px}
+.brand{gap:10px;text-align:left}
+.brand-ic{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0E7AA6,#14A0B8);display:grid;place-items:center;color:#fff;flex:0 0 auto}
+.brand-ic svg{width:20px;height:20px}
+.brand-t{display:grid;line-height:1.15}
+.brand-t b{font-family:var(--f-display);font-size:1.1rem;font-weight:800}
+.brand-t small{font-family:var(--f-body);font-size:.72rem;font-weight:500;color:var(--muted)}
+.topnav{display:flex;gap:4px}
+.navbtn{border-radius:10px;font-size:.95rem;color:var(--ink);padding:0 12px}
+.navbtn[aria-current="page"]{background:var(--aqua-soft);box-shadow:none;border-color:transparent;color:var(--primary-d)}
+.hpills{display:flex;gap:8px}
+.navbtn,.brand-t b{white-space:nowrap}
+.hpill{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:99px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:.85rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hpill svg{width:16px;height:16px}
+.hpill.sc{background:var(--sun-soft);border-color:#F3DFA4;color:#6E4A00}
+@media (max-width:720px){.topnav .lbl{display:none}.brand-t small{display:none}.bar-in{gap:10px}.hpill.u{display:none}}
+@media (max-width:420px){.brand-t{display:none}}
+
+.shell{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;align-items:start;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);display:grid;gap:6px}
+.side-h{padding:0 12px 6px}
+.side-list{display:grid;gap:4px}
+.side-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;background:transparent;border-radius:14px;padding:10px 12px;min-height:56px;transition:background .2s}
+.side-item:not(:disabled):hover{background:rgba(255,255,255,.6)}
+.side-item[aria-current="page"]{background:#fff;box-shadow:var(--clay-sm)}
+.side-item:disabled{cursor:not-allowed;opacity:.5}
+.side-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.82rem;background:#E3EEF3;color:var(--muted);flex:0 0 auto}
+.side-dot svg{width:14px;height:14px}
+.side-item[aria-current="page"] .side-dot{background:var(--navy);color:#fff}
+.side-item.done .side-dot{background:var(--good);color:#fff}
+.side-t{display:grid;line-height:1.2;min-width:0}
+.side-t small{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.side-t b{font-size:1rem;font-weight:700}
+.side-pf{margin-top:10px;display:flex;align-items:center;gap:10px;min-height:48px;padding:0 14px;border-radius:14px;border:1.5px dashed var(--line);background:transparent;font-weight:600;text-align:left}
+.side-pf svg{width:18px;height:18px}
+.side-pf[aria-current="page"]{background:#fff;border-style:solid;border-color:var(--primary);color:var(--primary-d)}
+.content{min-width:0;display:grid;gap:22px}
+.side-steps{display:grid;gap:2px;margin:2px 0 8px 25px;padding-left:14px;border-left:2px solid var(--line)}
+.ss{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:transparent;border-radius:12px;padding:8px 10px;min-height:48px;color:var(--ink);transition:background .15s}
+.ss:hover{background:rgba(255,255,255,.7)}
+.ss[aria-selected="true"]{background:var(--navy);color:#fff}
+.ss-ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#E3EEF3;color:var(--navy);flex:0 0 auto}
+.ss-ic svg{width:16px;height:16px}
+.ss[aria-selected="true"] .ss-ic{background:rgba(255,255,255,.18);color:#fff}
+.ss.ok .ss-ic{background:var(--good-soft);color:var(--good)}
+.ss-t{display:grid;line-height:1.25;font-size:.9rem;font-weight:600;min-width:0}
+.ss-t small{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.7}
+.side{max-height:calc(100vh - 110px);overflow-y:auto;padding-right:4px}
+@media (min-width:601px){.steps{display:none}}
+@media (min-width:601px) and (max-width:900px){.shell{grid-template-columns:200px minmax(0,1fr);gap:18px}.side-steps{margin-left:12px;padding-left:8px}.ss{padding:8px 6px}.ss-t{font-size:.84rem}.uhero{padding:22px}}
+@media (max-width:600px){.side-steps{display:none}.side{max-height:none;overflow-y:visible}}
+@media (max-width:600px){
+ .shell{grid-template-columns:minmax(0,1fr);gap:16px;padding-block:16px 56px}
+ .side{position:static;display:flex;overflow-x:auto;gap:8px;padding-bottom:4px}
+ .side-h{display:none}
+ .side-list{display:flex;gap:6px}
+ .side-item{width:auto;flex:0 0 auto;padding:8px 12px;min-height:48px;background:rgba(255,255,255,.55)}
+ .side-pf{margin-top:0;flex:0 0 auto;white-space:nowrap}
+}
+
+.uhero{border-radius:24px;padding:28px 32px;background:linear-gradient(120deg,#0A6A9C 0%,#0E84A9 100%);color:#fff;display:grid;gap:12px;box-shadow:0 14px 34px rgba(10,106,156,.22)}
+.uhero h1{color:#fff;font-size:clamp(1.8rem,4.6vw,2.6rem);font-weight:800}
+.uhero p{color:#DDF1F8;max-width:62ch}
+.hchips{display:flex;flex-wrap:wrap;gap:8px}
+.hchip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:99px;background:rgba(255,255,255,.18);font-size:.8rem;font-weight:700;color:#fff}
+.hchip svg{width:15px;height:15px}
+@media (max-width:560px){.uhero{padding:22px 20px}}
+.steps{gap:10px;padding:2px 2px 6px}
+.step{min-height:46px;padding:0 18px 0 8px;border:1.5px solid transparent;background:rgba(255,255,255,.75);color:var(--ink);font-size:.95rem;box-shadow:none}
+.step .dot{width:30px;height:30px;background:#E3EEF3;font-size:.85rem}
+.step.ok .dot{background:transparent;color:var(--good);border:2px solid var(--good)}
+.step[aria-current="step"]{border-color:var(--navy);background:#fff;color:var(--ink);box-shadow:none}
+.step[aria-current="step"] .dot{background:var(--navy);color:#fff;border:0}
+.card-h{display:flex;align-items:center;gap:14px}
+.card-ic{width:44px;height:44px;border-radius:12px;background:#E7F1F6;color:var(--navy);display:grid;place-items:center;flex:0 0 auto}
+.card-h .eyebrow{font-size:.72rem;color:var(--navy)}
+.card-h h3{font-size:clamp(1.35rem,3.5vw,1.65rem);font-weight:800}
+.await{display:flex;align-items:center;gap:16px;padding:18px;border-radius:16px;border:1px solid var(--line);background:#F5FAFC}
+.await-m{width:56px;height:56px;border-radius:50%;border:2px dashed #8FB2C4;display:grid;place-items:center;color:var(--navy);flex:0 0 auto}
+.await-m svg{width:26px;height:26px}
+.await.got{background:var(--good-soft);border-color:#BCE5CF}
+.await.got .await-m{border:0;color:#fff}
+.await b{font-size:1.05rem}
+.checks{display:grid;gap:10px}
+.chk{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.chk-c{width:22px;height:22px;border-radius:50%;border:2px solid var(--navy);display:grid;place-items:center;flex:0 0 auto}
+.chk.ok .chk-c{background:var(--good);border-color:var(--good);color:#fff}
+.chk-c svg{width:14px;height:14px;stroke-width:3}
+.chk-t{flex:1;min-width:0;display:grid;gap:2px}
+.chk-t b{font-weight:700}
+.chk-t small{font-size:.82rem;color:var(--bad)}
+.chk.ok .chk-t small{color:var(--good)}
+.chk-go{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;font-weight:700;font-size:.85rem;color:var(--navy);min-height:44px;padding:0 4px;flex:0 0 auto}
+.chk-go svg{width:16px;height:16px}
+.unav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot{margin-top:8px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="bar"><div class="bar-in">
+  <button class="brand" data-route="peta" aria-label="Jejak Inovator, ke Papan Pemuka">
+    <span class="brand-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-3 4.5-6 7.6-6 11a6 6 0 0 0 12 0c0-3.4-3-6.5-6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
+    <span class="brand-t"><b>Jejak Inovator</b><small>Design Thinking × AI</small></span>
+  </button>
+  <nav class="topnav">
+    <button class="navbtn" data-route="peta"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="lbl">Papan Pemuka</span></button>
+    <button class="navbtn" data-route="portfolio"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><span class="lbl">Portfolio</span></button>
+  </nav>
+  <span class="spacer"></span>
+  <div class="hpills" id="hpills"></div>
+</div></header>
+
+<div class="shell"><aside class="side" id="side" aria-label="Perjalanan"></aside>
+<div class="content"><main id="main"></main>
+<p class="foot">Jejak Inovator · Design Thinking + AI · AI sebagai rakan berfikir, keputusan milik kamu</p></div></div>
+<div id="modalRoot"></div>
+<canvas id="confetti" hidden></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+const KEY='jejakInovator.v1';
+const RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- icons (lucide-style) ---------- */
+const IC={
+ flag:'<path d="M4 22V4"/><path d="M4 4h12l-2 4 2 4H4"/>',
+ heart:'<path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+ bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',
+ pencil:'<path d="M3 21l3.8-1 11-11a2.1 2.1 0 0 0-3-3l-11 11L3 21z"/><path d="M14 6l3 3"/>',
+ flask:'<path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7 15h10"/>',
+ trophy:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/>',
+ book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+ game:'<rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="13.5" r="1"/>',
+ edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>',
+ medal:'<circle cx="12" cy="14" r="6"/><path d="M8.5 9 6 3h4l2 4 2-4h4l-2.5 6"/>',
+ check:'<path d="M20 6 9 17l-5-5"/>',
+ x:'<path d="M18 6 6 18M6 6l12 12"/>',
+ lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+ copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+ arrowR:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ arrowL:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
+ star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/>',
+ sparkle:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+ alert:'<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ play:'<path d="M6 4l14 8-14 8V4z"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ zap:'<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>',
+ thermo:'<path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0z"/>',
+ wind:'<path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h7"/>',
+ volume:'<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
+ rain:'<path d="M20 15.5A4.5 4.5 0 0 0 17.5 7a6 6 0 0 0-11.6 1.5A4 4 0 0 0 6 16.5"/><path d="M8 19v2M12 17v4M16 19v2"/>',
+ plug:'<path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ download:'<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
+ eraser:'<path d="M7 21h10M5.5 15.5l7-7 5 5-5.5 5.5H8z"/><path d="m12.5 8.5 3-3 5 5-3 3"/>'
+};
+const ic=(n,cls='i')=>`<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+const MASCOT=(mood='')=>`<svg class="m" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 4C22 17 12 26 12 37a18 18 0 0 0 36 0C48 26 38 17 30 4z" fill="#22A9B8"/><ellipse cx="22" cy="30" rx="4" ry="7" fill="#fff" opacity=".35"/><circle cx="24" cy="38" r="2.6" fill="#0F2F45"/><circle cx="36" cy="38" r="2.6" fill="#0F2F45"/><circle cx="20" cy="43" r="2.5" fill="#F79AA8" opacity=".7"/><circle cx="40" cy="43" r="2.5" fill="#F79AA8" opacity=".7"/>${mood==='happy'?'<path d="M24 44q6 6 12 0" stroke="#0F2F45" stroke-width="2.4" fill="none" stroke-linecap="round"/>':'<path d="M25 45q5 3 10 0" stroke="#0F2F45" stroke-width="2.4" fill="none" stroke-linecap="round"/>'}</svg>`;
+
+/* ---------- data ---------- */
+const PERSONAS=[
+ {id:'panas',fokus:'Panas',watak:'Aina, pelajar Tingkatan 3',ringkas:'Kelas terlalu panas, pelajar tak fokus',pengguna:'pelajar Tingkatan 3 di kelas tingkat atas',situasi:'belajar selepas rehat (11 pagi hingga 1 petang) di kelas tingkat atas yang berbumbung zink',rasa:'"Cikgu tengah ajar Matematik, tapi aku asyik kipas muka dengan buku. Peluh sampai basah baju."',soalan:'Bila kelas paling panas? Di bahagian mana? Kenapa kipas tak membantu?',tek:'sensor suhu, kipas automatik, penebat bumbung, tenaga solar',c:'var(--p6)',i:'thermo'},
+ {id:'pengap',fokus:'Pengap',watak:'Harith, pelajar Tingkatan 4',ringkas:'Udara tak beredar, kelas berbau dan mengantuk',pengguna:'pelajar Tingkatan 4 dalam kelas yang padat',situasi:'masuk kelas selepas PJ, 35 pelajar dalam satu kelas dan tingkap selalu ditutup kerana tempias atau habuk',rasa:'"Masuk kelas lepas PJ rasa macam masuk tin sardin. Kepala berat, nak tidur je."',soalan:'Kenapa tingkap ditutup? Bila udara paling teruk? Macam mana nak tahu udara dah tak segar?',tek:'sensor kualiti udara (CO2), kipas ekzos, penapis udara, tingkap pintar',c:'var(--p4)',i:'wind'},
+ {id:'bising',fokus:'Bising',watak:'Cikgu Salmah, guru Bahasa Melayu',ringkas:'Bunyi luar ganggu PdP',pengguna:'guru yang mengajar di kelas tepi jalan',situasi:'mengajar di kelas bersebelahan jalan utama dan padang, bunyi lori, motosikal dan sorakan PJ masuk serentak',rasa:'"Saya terpaksa jerit. Pelajar belakang tak dengar, suara saya serak setiap petang."',soalan:'Bunyi datang dari mana? Pukul berapa paling bising? Siapa paling terkesan: guru atau pelajar belakang?',tek:'sensor bunyi (desibel), panel penyerap bunyi, pembesar suara mini, lampu amaran bising',c:'var(--p1)',i:'volume'},
+ {id:'banjir',fokus:'Tempias & Banjir',watak:'Daniel, pelajar sekolah kawasan rendah',ringkas:'Air hujan masuk, barang rosak',pengguna:'pelajar di sekolah kawasan rendah',situasi:'musim tengkujuh (November hingga Mac), hujan lebat masuk ikut tingkap nako dan kadang-kadang air naik ke kelas tingkat bawah',rasa:'"Buku latihan aku basah sampai tulisan kembang. Pagi esok kelas bau hapak."',soalan:'Air masuk ikut mana? Barang apa paling kerap rosak? Berapa cepat air naik?',tek:'sensor hujan atau paras air, penghadang automatik, rak tinggi, penggera banjir',c:'var(--p5)',i:'rain'},
+ {id:'tenaga',fokus:'Tenaga Terbazir',watak:'Pak Mat, pekerja am sekolah',ringkas:'Kipas dan lampu terpasang bila kelas kosong',pengguna:'pekerja am sekolah',situasi:'waktu PJ, rehat atau bila pelajar pindah ke makmal, kipas dan lampu masih terpasang dan dia perlu meronda 40 kelas',rasa:'"Setiap petang saya ronda satu blok tutup suis. Bil elektrik sekolah tinggi, pengetua selalu tegur."',soalan:'Bila kelas kosong? Siapa patut tutup suis? Kenapa pelajar selalu lupa?',tek:'sensor gerakan (PIR), suis pemasa, papan pemantau tenaga, sistem amaran',c:'var(--p3)',i:'plug'},
+ {id:'sendiri',fokus:'',watak:'',ringkas:'Pilih fokus lain dalam tema Kelas Selesa',pengguna:'',situasi:'',c:'var(--p0)',i:'plus'}
+];
+const EXTRA_FOKUS=['Silau / Cahaya','Habuk & Kotor','Nyamuk & Serangga','Meja & Kerusi'];
+const persona=()=>PERSONAS.find(p=>p.id===S.persona);
+const fk=()=>v('fokus')||'⟦fokus⟧';
+const BADGES=['Peneroka','Pendengar','Penyiasat','Pencipta Idea','Pereka','Penguji','Inovator'];
+const PTS=10,SPRINT_MAX=8;
+function gMax(id){const g=GAMES[id];return g.type==='sprint'?SPRINT_MAX*PTS:g.type==='builder'?BUILDER_GOOD.length*PTS:g.items.length*PTS}
+const MAXALL=()=>Object.keys(GAMES).reduce((t,k)=>t+gMax(k),0);
+const total=()=>Object.values(S.games).reduce((t,r)=>t+(r&&typeof r==='object'?r.score:0),0);
+const levelOf=sc=>{const p=sc/MAXALL();return p>=.85?'Inovator Cemerlang':p>=.6?'Inovator':p>=.3?'Pereka Muda':'Perintis'};
+
+let S=load();
+if(S.persona&&!PERSONAS.find(p=>p.id===S.persona))S.persona='';
+function blank(){return {name:'',persona:'',f:{},games:{},done:[0,0,0,0,0,0,0],sprint:[],sketch:'',image:'',xp:0,bonus:{},cur:0,finishedAt:''}}
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.done){const o=Object.assign(blank(),v);Object.keys(o.games).forEach(k=>{if(typeof o.games[k]!=='object')delete o.games[k]});return o}}catch(e){}return blank()}
+let saveWarn=false;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));saveWarn=false}catch(e){saveWarn=true}}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const v=k=>(S.f[k]||'').trim();
+const ph=(k,label)=>v(k)?v(k):'⟦'+label+'⟧';
+const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):'';
+function stmt(){return [v('pengguna')||'⟦pengguna⟧',' menghadapi masalah ',ph('d_apa','masalah'),' semasa ',ph('d_bila','bila'),' di ',ph('d_mana','di mana'),' kerana ',ph('d_kenapa','sebab'),'.'].join('')}
+function finalStmt(){return v('d_final')||stmt()}
+
+const BS=['Betul','Salah'],EM=['Kata','Fikir','Rasa','Buat'],SC=['S','C','A','M','P','E','R'];
+const GAMES={
+ g0:{type:'classify',title:'Betul atau Salah?',pass:4,intro:'Tandakan setiap pernyataan Betul atau Salah.',items:[
+   {t:'AI sentiasa memberi jawapan yang betul.',o:BS,a:1},
+   {t:'Kita patut masukkan alamat rumah dalam prompt supaya jawapan lebih tepat.',o:BS,a:1},
+   {t:'Prompt yang jelas dan lengkap memberi jawapan yang lebih baik.',o:BS,a:0},
+   {t:'Design Thinking bermula dengan memahami pengguna.',o:BS,a:0},
+   {t:'Idea daripada AI boleh terus digunakan tanpa disemak.',o:BS,a:1}]},
+ g1:{type:'classify',title:'Peta Empati',pass:6,intro:'Aina belajar di kelas tingkat atas yang sangat panas selepas rehat. Apa yang dia Kata, Fikir, Rasa atau Buat?',items:[
+   {t:'"Panasnya kelas ni!"',o:EM,a:0},{t:'Agaknya bumbung zink yang buat kelas panas.',o:EM,a:1},
+   {t:'Rimas dan mengantuk selepas rehat.',o:EM,a:2},{t:'Kipas muka dengan buku latihan.',o:EM,a:3},
+   {t:'"Cikgu, boleh buka pintu?"',o:EM,a:0},{t:'Kalau macam ni, mesti aku tak faham topik hari ni.',o:EM,a:1},
+   {t:'Malu sebab baju basah berpeluh.',o:EM,a:2},{t:'Pindah duduk dekat tingkap.',o:EM,a:3}]},
+ g2:{type:'classify',title:'Kabur atau Jelas?',pass:5,intro:'Penyataan masalah yang baik menyebut pengguna, masalah dan sebab.',items:[
+   {t:'Kelas tak best.',o:['Kabur','Jelas'],a:0},
+   {t:'Pelajar kelas tingkat atas sukar fokus selepas rehat kerana haba dari bumbung zink terperangkap.',o:['Kabur','Jelas'],a:1},
+   {t:'Kita perlu cipta kipas pintar.',o:['Kabur','Jelas'],a:0},
+   {t:'Guru di kelas tepi jalan terpaksa meninggikan suara kerana bunyi kenderaan masuk semasa PdP.',o:['Kabur','Jelas'],a:1},
+   {t:'Sekolah ada banyak masalah.',o:['Kabur','Jelas'],a:0},
+   {t:'Pekerja am perlu meronda banyak kelas untuk menutup suis kerana pelajar lupa mematikan kipas dan lampu.',o:['Kabur','Jelas'],a:1}]},
+ g3a:{type:'sprint',title:'Idea Sprint 60 Saat',pass:3},
+ g3b:{type:'classify',title:'Padankan SCAMPER',pass:5,intro:'Padankan setiap idea untuk kelas selesa dengan huruf SCAMPER.',items:[
+   {t:'Ganti cermin tingkap biasa dengan kaca pemantul haba.',o:SC,a:0},{t:'Gabungkan kipas dengan sensor suhu.',o:SC,a:1},
+   {t:'Ambil idea lampu tandas automatik untuk lampu kelas.',o:SC,a:2},{t:'Besarkan lubang ventilasi di atas pintu.',o:SC,a:3},
+   {t:'Jadikan botol plastik terpakai sebagai pasu pokok di tepi tingkap.',o:SC,a:4},{t:'Buang suis manual, guna sensor gerakan.',o:SC,a:5},
+   {t:'Pusingkan susunan meja supaya pelajar tidak menghadap tingkap yang silau.',o:SC,a:6}]},
+ g4:{type:'builder',title:'Bina Prompt Terbaik',pass:7},
+ g5:{type:'classify',title:'Maklum Balas Bijak',pass:5,intro:'Maklum balas membina membantu inovator memperbaiki produk.',items:[
+   {t:'"Saya suka sensor suhu tu, tapi paparan LED terlalu kecil untuk pelajar belakang."',o:['Membina','Tak membina'],a:0},
+   {t:'"Tak best."',o:['Membina','Tak membina'],a:1},
+   {t:'"Bagaimana kalau kipas ini guna tenaga solar?"',o:['Membina','Tak membina'],a:0},
+   {t:'"Idea ni merepek."',o:['Membina','Tak membina'],a:1},
+   {t:'"Saya risau bunyi kipas ekzos akan ganggu PdP."',o:['Membina','Tak membina'],a:0},
+   {t:'"Buat la benda lain."',o:['Membina','Tak membina'],a:1}]},
+ g6:{type:'classify',title:'Kuiz Akhir',pass:7,intro:'10 soalan, 10 markah setiap jawapan betul.',items:[
+   {t:'Apakah fasa pertama Design Thinking?',o:['Ideate','Empathize','Test'],a:1},
+   {t:'Teknik 5W1H digunakan untuk...',o:['Menggali maklumat pengguna dan masalah','Melukis prototaip','Menulis slogan'],a:0},
+   {t:'Penyataan masalah yang baik...',o:['Terus menyebut penyelesaian','Menyebut pengguna, masalah dan sebab','Sangat pendek dan umum'],a:1},
+   {t:'RTF dalam teknik prompting bermaksud...',o:['Role, Task, Format','Read, Think, Find','Rule, Test, Fix'],a:0},
+   {t:'Frasa "Berfikir langkah demi langkah" ialah teknik...',o:['SCAMPER','Chain-of-Thought','5W1H'],a:1},
+   {t:'Dalam SCAMPER, huruf E bermaksud...',o:['Expand (Besarkan)','Eliminate (Buang)','Explain (Terangkan)'],a:1},
+   {t:'Peraturan sesi brainstorm ialah...',o:['Nilai setiap idea serta-merta','Kumpul banyak idea dahulu, nilai kemudian','Pilih idea pertama sahaja'],a:1},
+   {t:'Tujuan prototaip ialah...',o:['Produk akhir yang sempurna','Model awal untuk diuji','Iklan produk'],a:1},
+   {t:'Contoh maklum balas yang membina ialah...',o:['"Bagaimana kalau kipas ini ada pemasa?"','"Tak menarik."','"Buang je idea ni."'],a:0},
+   {t:'Apa yang TIDAK patut dimasukkan dalam prompt?',o:['Nama produk','Alamat rumah dan nombor telefon','Ciri-ciri produk'],a:1}]}
+};
+const BUILDER_GOOD=[['Subjek','gambar 3D kipas ekzos pintar'],['Bentuk','berbentuk kotak segi empat'],['Warna','warna putih dan biru'],['Bahan','diperbuat daripada plastik ABS dan panel solar'],['Ciri utama','ada sensor suhu dan paparan LED'],['Pengguna','digunakan oleh pelajar sekolah'],['Latar','dipasang di dinding kelas'],['Gaya','gaya ilustrasi produk']];
+const BUILDER_BAD=[['Nama penuh saya'],['Alamat sekolah'],['"Tolong cepat!"']];
+
+const P={
+ empathy:()=>`Bertindak sebagai pakar reka bentuk berpusatkan pengguna. Saya sedang mengkaji ${v('pengguna')||'⟦pengguna⟧'} yang ${v('situasi')||'⟦situasi⟧'}, berkaitan masalah kelas tidak selesa (fokus: ${fk()}).
+Ini analisis 5W1H saya:
+- Who: ${ph('w_who','siapa')}
+- What: ${ph('w_what','apa')}
+- When: ${ph('w_when','bila')}
+- Where: ${ph('w_where','di mana')}
+- Why: ${ph('w_why','kenapa')}
+- How: ${ph('w_how','bagaimana')}
+Semak analisis ini. Nyatakan 2 perkara yang mungkin saya terlepas dan cadangkan 3 soalan temubual untuk pengguna ini. Jawab ringkas dalam Bahasa Melayu.`,
+ define:()=>`Bertindak sebagai guru inovasi. Nilai penyataan masalah ini:
+"${stmt()}"
+Beri skor kejelasan 1 hingga 5, terangkan sebabnya dalam 2 ayat, dan cadangkan satu versi yang lebih baik. Jawab ringkas dalam Bahasa Melayu.`,
+ ideate:()=>`Bertindak sebagai pereka produk inovasi. Pengguna saya ialah ${v('pengguna')||'⟦pengguna⟧'}. Masalah mereka: ${finalStmt()}
+Ini idea awal saya: ${S.sprint.length?S.sprint.join('; '):'⟦idea daripada Idea Sprint⟧'}.
+Berikan 5 idea inovasi untuk menjadikan kelas lebih selesa (fokus: ${fk()}) dalam bentuk jadual (nama idea, cara berfungsi, kelebihan). Gunakan idea saya sebagai inspirasi. Jawab ringkas, maksimum 2 ayat setiap idea.`,
+ scamper:()=>`Tambah baik idea "${ph('i_idea','idea dipilih')}" untuk ${v('pengguna')||'⟦pengguna⟧'} menggunakan kaedah SCAMPER dalam bentuk jadual. Berfikir langkah demi langkah. Jawab ringkas, 1 ayat setiap huruf.`,
+ juri:()=>`Kau juri pertandingan inovasi yang tegas. Cari 3 kelemahan produk "${ph('i_idea','idea dipilih')}" untuk ${v('pengguna')||'⟦pengguna⟧'} dan cadangkan cara mengatasinya secara ringkas.`,
+ visual:()=>`Hasilkan gambar 3D ${ph('p_nama','nama produk')}, iaitu inovasi untuk mengatasi masalah ${fk()} di dalam kelas, berbentuk ${ph('p_bentuk','bentuk')}, saiz ${ph('p_saiz','saiz')}, warna ${ph('p_warna','warna')}, diperbuat daripada ${ph('p_bahan','bahan')}, ada ${ph('p_c1','ciri 1')}, ${ph('p_c2','ciri 2')} dan ${ph('p_c3','ciri 3')}, digunakan oleh ${v('pengguna')||'⟦pengguna⟧'} di ${ph('w_where','tempat')}, latar putih, gaya ilustrasi produk.`,
+ test:()=>`Kau ialah ${v('pengguna')||'⟦pengguna⟧'} yang ${v('situasi')||'⟦situasi⟧'}. Saya akan tunjukkan produk saya:
+${ph('p_nama','nama produk')}: inovasi untuk masalah ${fk()} di kelas, berbentuk ${ph('p_bentuk','bentuk')}, warna ${ph('p_warna','warna')}, ada ${ph('p_c1','ciri 1')}, ${ph('p_c2','ciri 2')} dan ${ph('p_c3','ciri 3')}.
+Berikan maklum balas jujur sebagai pengguna ini dalam format:
+Saya suka...
+Saya risau...
+Bagaimana kalau...
+Jawab ringkas dalam Bahasa Melayu.`,
+ pitch:()=>`Bertindak sebagai jurulatih pitching. Bantu saya kemaskan skrip pitch 2 minit untuk pelajar sekolah.
+Nama produk: ${ph('p_nama','nama produk')}
+Masalah: ${finalStmt()}
+Cara berfungsi: ${ph('h_cara','cara berfungsi')}
+Keunikan: ${ph('h_unik','apa yang unik')}
+Slogan: ${ph('h_slogan','slogan')}
+Kekalkan idea saya, perbaiki bahasa, maksimum 150 patah perkataan.`
+};
+
+const U=[
+ {short:'Mula',title:'Selamat datang, inovator!',sub:'AI & Design Thinking',icon:'flag',color:'var(--p0)',
+  tips:['Aku Titis! Aku akan temankan kamu sepanjang jejak ini.','Setiap game dijawab sekali sahaja. Baca soalan betul-betul sebelum hantar!','Pilih fokus yang paling kamu rasa sendiri di dalam kelas.'],
+  theory:`<p><b>AI (kecerdasan buatan)</b> ialah alat yang belajar daripada banyak data untuk menjawab soalan dan menjana idea. Ia pantas, tetapi boleh silap.</p>
+   <p><b>Design Thinking</b> ialah cara mencipta penyelesaian yang benar-benar berguna. Kita tak terus reka; kita faham pengguna dulu.</p>
+   <div class="tiles"><div class="tile"><b>1 Empathize</b><span>Faham pengguna</span></div><div class="tile"><b>2 Define</b><span>Tentukan masalah</span></div><div class="tile"><b>3 Ideate</b><span>Jana idea</span></div><div class="tile"><b>4 Prototype</b><span>Bina model awal</span></div><div class="tile"><b>5 Test</b><span>Uji & baiki</span></div></div>
+   <p><b>Tema kita: Kelas Selesa.</b> Bagaimana nak jadikan kelas lebih selesa untuk belajar? Kamu akan pilih <b>satu fokus</b>:</p>
+   <div class="tiles"><div class="tile"><b>Panas</b><span>Kelas terlalu panas</span></div><div class="tile"><b>Pengap</b><span>Udara tak beredar</span></div><div class="tile"><b>Bising</b><span>Bunyi luar ganggu PdP</span></div><div class="tile"><b>Tempias & Banjir</b><span>Air hujan masuk</span></div><div class="tile"><b>Tenaga Terbazir</b><span>Kipas & lampu terbiar</span></div><div class="tile"><b>Pilih sendiri</b><span>Silau, habuk, nyamuk, meja...</span></div></div>
+   <p><b>3 peraturan guna AI</b></p>
+   <ul><li>Jangan masukkan nama penuh, alamat, nombor telefon atau data peribadi.</li><li>Semak semula jawapan AI. Ia boleh silap.</li><li>AI ialah rakan berfikir. Keputusan tetap milik kamu.</li></ul>
+   <p><b>Pertandingan markah:</b> setiap game hanya boleh dijawab <b>sekali</b>. Markah terus dikira dan dikunci. Pelajar dengan jumlah markah tertinggi menjadi pemenang.</p>
+   <p><b>Cara modul berfungsi:</b> isi borang, tekan <i>Salin Prompt</i>, tampal di tool AI yang dibenarkan guru, dan catat apa yang kamu dapat.</p>`,
+  games:['g0'],req:['name','persona','fokus','pengguna','situasi'],mission:missionStart},
+ {short:'Empathize',title:'Fasa 1: Empathize',sub:'Faham pengguna dengan 5W1H',icon:'heart',color:'var(--p1)',
+  tips:['Bayangkan satu hari dalam hidup pengguna kamu.','Kata = apa yang diucap. Fikir = dalam kepala. Rasa = emosi. Buat = tindakan.','Tulis jawapan sendiri dulu, baru minta AI semak.'],
+  theory:`<p>Inovasi yang baik bermula dengan <b>empati</b>: memahami perasaan dan keperluan orang yang menghadapi masalah. Tanpa empati, kita cipta idea "syok sendiri".</p>
+   <div class="tiles"><div class="tile"><b>Who</b><span>Siapa pengguna?</span></div><div class="tile"><b>What</b><span>Apa masalahnya?</span></div><div class="tile"><b>When</b><span>Bila berlaku?</span></div><div class="tile"><b>Where</b><span>Di mana berlaku?</span></div><div class="tile"><b>Why</b><span>Kenapa berlaku?</span></div><div class="tile"><b>How</b><span>Bagaimana keadaan sekarang?</span></div></div>
+   <p><b>Tip:</b> bayangkan satu hari di dalam kelas. Bila paling tak selesa? Siapa paling terkesan? Apa yang mereka buat untuk atasi?</p>`,
+  games:['g1'],req:['w_who','w_what','w_when','w_where','w_why','w_how','e_ai'],mission:missionEmpathy},
+ {short:'Define',title:'Fasa 2: Define',sub:'Tulis satu ayat masalah yang jelas',icon:'target',color:'var(--p2)',
+  tips:['Masalah yang jelas separuh daripada penyelesaian.','Elak terus sebut penyelesaian dalam penyataan masalah.','Ruang dah diisi daripada 5W1H kamu. Ringkaskan je.'],
+  theory:`<p>Penyataan masalah yang baik ada 4 ciri:</p>
+   <ul><li><b>Pengguna</b> yang spesifik (bukan "semua orang").</li><li><b>Masalah</b> yang jelas.</li><li><b>Bila dan di mana</b> ia berlaku.</li><li><b>Sebab</b> masalah berlaku, tanpa terus menyebut penyelesaian.</li></ul>
+   <p class="formula">[Pengguna] menghadapi masalah [apa] semasa [bila] di [mana] kerana [kenapa].</p>`,
+  games:['g2'],req:['d_apa','d_bila','d_mana','d_kenapa','d_final'],mission:missionDefine},
+ {short:'Ideate',title:'Fasa 3: Ideate',sub:'Jana idea & tambah baik dengan SCAMPER',icon:'bulb',color:'var(--p3)',
+  tips:['Kuantiti dulu! Idea pelik pun boleh jadi permata.','Ada 2 game di sini: Idea Sprint dan Padankan SCAMPER.','Idea Sprint kamu akan masuk terus ke dalam prompt.'],
+  theory:`<p><b>Peraturan brainstorm:</b> kuantiti dahulu, jangan nilai dulu, idea pelik dialu-alukan, bina atas idea lain.</p>
+   <div class="tiles"><div class="tile"><b>S</b><span>Substitute: ganti bahan</span></div><div class="tile"><b>C</b><span>Combine: gabungkan</span></div><div class="tile"><b>A</b><span>Adapt: ambil idea lain</span></div><div class="tile"><b>M</b><span>Modify: ubah saiz/bentuk</span></div><div class="tile"><b>P</b><span>Put to other use</span></div><div class="tile"><b>E</b><span>Eliminate: buang</span></div><div class="tile"><b>R</b><span>Reverse: terbalikkan</span></div></div>
+   <p>Prompt fasa ini guna teknik <b>RTF</b> (Role, Task, Format) dan <b>Chain-of-Thought</b> ("berfikir langkah demi langkah").</p>`,
+  games:['g3a','g3b'],req:['i_idea','i_why','i_c1','i_c2'],mission:missionIdeate},
+ {short:'Prototype',title:'Fasa 4: Prototype',sub:'Lakaran, ciri produk & gambar AI',icon:'pencil',color:'var(--p4)',
+  tips:['Prototaip tak perlu cantik. Cukup untuk orang faham idea kamu.','Lagi lengkap prompt, lagi tepat gambar AI.','Lakar dulu dengan jari atau tetikus.'],
+  theory:`<p><b>Prototaip</b> ialah model awal: lakaran, model kadbod atau gambar. Tujuannya untuk diuji, bukan dijual.</p>
+   <p>Laluan kita: <b>lakaran tangan → Kotak Ciri Produk → prompt gambar AI</b>.</p>
+   <p>Prompt gambar yang baik menyebut: subjek, bentuk, warna, bahan, ciri utama, pengguna, latar dan gaya.</p>`,
+  games:['g4'],req:['p_nama','p_bentuk','p_saiz','p_warna','p_bahan','p_c1','p_c2','p_c3','p_ubah'],mission:missionPrototype},
+ {short:'Test',title:'Fasa 5: Test',sub:'Dapat maklum balas & baiki',icon:'flask',color:'var(--p5)',
+  tips:['Maklum balas manusia lebih berharga daripada AI.','Komen yang membina selalu ada sebab atau cadangan.','Ulang semula fasa sebelum? Itu biasa bagi inovator.'],
+  theory:`<p>Uji dengan orang sebenar seperti kawan, keluarga atau guru. AI boleh bantu dengan berlakon sebagai pengguna.</p>
+   <div class="tiles"><div class="tile"><b>Saya suka…</b><span>Apa yang berkesan</span></div><div class="tile"><b>Saya risau…</b><span>Apa yang perlu dibaiki</span></div><div class="tile"><b>Bagaimana kalau…</b><span>Idea baharu</span></div></div>
+   <p>Jika produk belum sesuai, ulang semula fasa sebelumnya.</p>`,
+  games:['g5'],req:['t_siapa','t_suka','t_risau','t_kalau','t_baiki'],mission:missionTest},
+ {short:'Pitch',title:'Pitch & Sijil',sub:'Skrip pitch, kuiz akhir & sijil',icon:'trophy',color:'var(--p6)',
+  tips:['Hampir sampai! Satu langkah lagi.','Kuiz akhir: 10 soalan, 100 markah. Sekali jawab sahaja.','Slogan pendek lebih mudah diingat.'],
+  theory:`<p><b>Pitch</b> ialah pembentangan pendek untuk meyakinkan orang tentang idea kamu. Skrip 2 minit yang baik ada: nama produk, masalah pengguna, cara berfungsi, apa yang unik, dan slogan.</p>`,
+  games:['g6'],req:['h_cara','h_unik','h_slogan','r_ai','r_saya'],mission:missionPitch}
+];
+const META=[
+ {phase:'Persediaan',min:8,misiLbl:'Profil',misiTitle:'Kenali diri & pilih fokus',lead:'Cipta satu inovasi untuk jadikan kelas lebih selesa. Pilih fokus kamu, ikut 5 fasa Design Thinking, main game kecil, dan guna AI sebagai rakan berfikir.'},
+ {phase:'Fasa 1',min:12,misiLbl:'5W1H',misiTitle:'Isi 5W1H & minta AI semak',lead:'Letak diri kamu dalam situasi pengguna. Apa yang mereka hadapi setiap hari?'},
+ {phase:'Fasa 2',min:10,misiLbl:'Masalah',misiTitle:'Tulis penyataan masalah',lead:'Kumpul maklumat 5W1H dan tulis satu ayat masalah yang jelas.'},
+ {phase:'Fasa 3',min:15,misiLbl:'Idea',misiTitle:'Jana & tambah baik idea',lead:'Cari seberapa banyak idea, kemudian guna AI untuk luaskan dan tambah baik.'},
+ {phase:'Fasa 4',min:15,misiLbl:'Prototaip',misiTitle:'Lakar & bina prompt gambar',lead:'Pilih idea terbaik dan beri ia rupa. Tak perlu sempurna, cukup untuk diuji.'},
+ {phase:'Fasa 5',min:10,misiLbl:'Maklum balas',misiTitle:'Uji & catat maklum balas',lead:'Tunjuk produk kepada pengguna, dengar maklum balas, dan baiki.'},
+ {phase:'Akhir',min:12,misiLbl:'Pitch',misiTitle:'Skrip pitch & refleksi',lead:'Susun skrip pitch, jawab kuiz akhir dan terima sijil kamu.'}];
+function stepInfo(i,s){if(s==='teori')return ['book','Teori','Fahami dulu'];if(s==='misi')return ['edit',META[i].misiLbl,META[i].misiTitle];if(s==='lencana')return ['medal','Lencana','Terima lencana'];return ['game','Game',GAMES[s].title]}
+function stepsOf(i){return ['teori',...U[i].games,'misi','lencana']}
+
+/* ---------- routing ---------- */
+const main=document.getElementById('main');
+S.seenT=S.seenT||{};
+let route={name:'peta'},stepIdx={};
+const unlocked=i=>i===0||!!S.done[i-1];
+const doneCount=()=>S.done.filter(Boolean).length;
+function parseHash(){const h=(location.hash||'').slice(1);const m=h.match(/^unit-(\d)$/);
+  if(m&&unlocked(+m[1]))return {name:'unit',i:+m[1]};if(h==='portfolio')return {name:'portfolio'};return {name:'peta'}}
+function nav(h){if(location.hash==='#'+h)render();else location.hash=h}
+window.addEventListener('hashchange',()=>{if(S.sprintStarted&&!attempted('g3a')){const ideas=S.sprint.slice();S.games.g3a={score:Math.min(ideas.length,SPRINT_MAX)*PTS,ideas,max:SPRINT_MAX*PTS,at:new Date().toISOString()};S.sprintStarted=0;save()}
+route=parseHash();render();window.scrollTo({top:0,behavior:RM?'auto':'smooth'})});
+document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>nav(b.dataset.route));
+
+function renderBar(){
+  document.getElementById('hpills').innerHTML=`<span class="hpill u" title="Unit lengkap">${ic('book')}${doneCount()}/7</span><span class="hpill sc" title="Jumlah markah">${ic('zap')}${total()} markah</span>`;
+  document.querySelectorAll('.navbtn').forEach(b=>b.setAttribute('aria-current',(b.dataset.route===route.name)?'page':'false'));
+  renderSide();
+}
+function sideSteps(i){
+  const steps=stepsOf(i),si=stepIdx[i]??0,ok=stepOkFn(i),u=U[i];
+  return `<div class="side-steps" role="tablist" aria-label="Langkah ${u.short}">${steps.map((st,k)=>{const [icn,lb]=stepInfo(i,st);const name=stepInfo(i,st)[2];const isOk=ok(st)&&k!==si;
+    return `<button class="ss ${isOk?'ok':''}" role="tab" data-sstep="${k}" aria-selected="${k===si}"><span class="ss-ic">${ic(isOk?'check':icn)}</span><span class="ss-t"><small>${lb}</small>${esc(name)}</span></button>`}).join('')}</div>`;
+}
+function renderSide(){
+  const side=document.getElementById('side');
+  side.innerHTML=`<p class="eyebrow side-h">Perjalanan</p><div class="side-list">${U.map((u,i)=>{const ul=unlocked(i),done=!!S.done[i],cur=route.name==='unit'&&route.i===i;
+    return `<button class="side-item ${done?'done':''}" data-unit="${i}" ${ul?'':'disabled'} ${cur?'aria-current="page"':''}><span class="side-dot">${done?ic('check'):ul?i+1:ic('lock')}</span><span class="side-t"><small>${META[i].phase}</small><b>${u.short}</b></span></button>${cur?sideSteps(i):''}`}).join('')}</div>
+   <button class="side-pf" data-pf ${route.name==='portfolio'?'aria-current="page"':''}>${ic('medal')}Portfolio & Sijil</button>`;
+  side.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>nav('unit-'+b.dataset.unit));
+  side.querySelector('[data-pf]').onclick=()=>nav('portfolio');
+  side.querySelectorAll('[data-sstep]').forEach(b=>b.onclick=()=>goStep(route.i,+b.dataset.sstep));
+}
+function render(){renderBar();if(route.name==='unit')renderUnit();else if(route.name==='portfolio'){main.innerHTML=portfolioHTML();bindPortfolio()}else renderMap()}
+
+/* ---------- map ---------- */
+function renderMap(){
+  const d=doneCount(),next=S.done.findIndex(x=>!x),nextI=next<0?6:next;
+  main.innerHTML=`<div class="view">
+   <section class="hero">
+    <div class="hero-txt"><span class="eyebrow">Modul kendiri · Design Thinking + AI</span>
+     <h1>${S.name?'Hai '+esc(S.name)+'!':'Jejak Inovator'}</h1>
+     <p>${d===0?'Cipta inovasi Kelas Selesa untuk pengguna sebenar. Main game, guna AI sebagai rakan berfikir, dan kumpul 7 lencana.':d===7?'Tahniah! Semua lencana terkumpul. Lihat portfolio dan sijil kamu.':'Teruskan jejak kamu. '+(7-d)+' lencana lagi untuk dapat sijil.'}</p>
+     <button class="btn accent" id="heroCta">${d===7?ic('trophy')+'Lihat sijil':ic('play')+(d===0?'Mula jejak':'Sambung: '+U[nextI].short)}</button></div>
+    <div class="hero-art"><svg class="bob" viewBox="0 0 120 200" aria-hidden="true">
+      <defs><clipPath id="bc"><path d="M44 8h32v22c0 8 22 14 22 36v112a14 14 0 0 1-14 14H36a14 14 0 0 1-14-14V66c0-22 22-28 22-36z"/></clipPath></defs>
+      <g clip-path="url(#bc)"><rect width="120" height="200" fill="rgba(255,255,255,.25)"/><rect x="0" y="${192-d/7*150}" width="120" height="200" fill="#fff" opacity=".9"/></g>
+      <path d="M44 8h32v22c0 8 22 14 22 36v112a14 14 0 0 1-14 14H36a14 14 0 0 1-14-14V66c0-22 22-28 22-36z" fill="none" stroke="#fff" stroke-width="5"/>
+      <rect x="40" y="0" width="40" height="12" rx="4" fill="#FFC63A"/>
+      <circle cx="50" cy="128" r="5" fill="#0F2F45"/><circle cx="70" cy="128" r="5" fill="#0F2F45"/><path d="M50 142q10 9 20 0" stroke="#0F2F45" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <text x="60" y="186" text-anchor="middle" font-family="Baloo 2,sans-serif" font-weight="800" font-size="20" fill="#0F2F45">${d}/7</text></svg></div>
+    <svg class="wave" viewBox="0 0 400 36" preserveAspectRatio="none" aria-hidden="true"><path d="M0 18q50-18 100 0t100 0 100 0 100 0v18H0z" fill="#fff"/></svg>
+   </section>
+   <section class="statrow"><div class="stat"><b>${d}/7</b><span>Unit lengkap</span></div><div class="stat"><b>${total()}</b><span>Markah / ${MAXALL()}</span></div><div class="stat"><b>${levelOf(total())}</b><span>Tahap</span></div></section>
+   <section class="card"><div class="row" style="justify-content:space-between"><h2 style="font-size:1.6rem">Peta Jejak</h2><span class="note">Air mengalir bila unit lengkap</span></div>
+    <div class="map"><div class="pipe"><i style="height:${d/6*100>100?100:Math.max(0,(d)/6*100)}%"></i></div>
+    ${U.map((u,i)=>{const done=!!S.done[i],ul=unlocked(i);return `<button class="station" data-unit="${i}" ${ul?'':'disabled'}>
+      <span class="node" style="background:${u.color}">${ic(done?'check':ul?u.icon:'lock')}</span>
+      <span class="st-txt"><b>${i}. ${u.short}</b><span>${u.sub}</span></span>
+      <span class="st-state ${done?'done':ul?'now':'lock'}">${done?'Lencana '+BADGES[i]:ul?'Buka':'Berkunci'}</span></button>`}).join('')}
+    </div></section></div>`;
+  document.getElementById('heroCta').onclick=()=>nav(d===7?'portfolio':'unit-'+nextI);
+  main.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>nav('unit-'+b.dataset.unit));
+}
+
+/* ---------- unit ---------- */
+function stepOkFn(i){const steps=stepsOf(i);return s=>s==='teori'?!!S.seenT[i]:GAMES[s]?attempted(s):s==='misi'?missingFields(i).length===0:!!S.done[i]}
+function goStep(i,k){const steps=stepsOf(i),si=stepIdx[i]??0;if(steps[si]==='teori'&&k!==si){S.seenT[i]=1;save()}stepIdx[i]=k;renderUnit();scrollToSteps()}
+function renderUnit(){
+  const i=route.i,u=U[i],steps=stepsOf(i);
+  if(stepIdx[i]===undefined)stepIdx[i]=S.done[i]?steps.length-1:0;
+  const si=stepIdx[i],step=steps[si],ok=stepOkFn(i);
+  const pct=Math.round(steps.filter(ok).length/steps.length*100);
+  const [sic,slbl,stitle]=stepInfo(i,step);
+  main.innerHTML=`<div class="view">
+   <section class="uhero"><div class="hchips"><span class="hchip">${META[i].phase}</span><span class="hchip">${ic('clock')}${META[i].min} min</span><span class="hchip">${pct}% lengkap</span></div>
+    <h1>${u.title}</h1><p>${META[i].lead}</p></section>
+   <nav class="steps" aria-label="Langkah unit">${steps.map((s,k)=>{const lb=stepInfo(i,s)[1]+(GAMES[s]&&u.games.length>1?' '+(u.games.indexOf(s)+1):'');return `<button class="step ${ok(s)&&k!==si?'ok':''}" data-step="${k}" ${k===si?'aria-current="step"':''}><span class="dot">${ok(s)&&k!==si?'✓':k+1}</span>${lb}</button>`}).join('')}</nav>
+   <section class="card" id="stepBody"><div class="card-h"><span class="card-ic">${ic(sic)}</span><div style="min-width:0"><span class="eyebrow">${slbl} · ${si+1} / ${steps.length}</span><h3>${stitle}</h3></div></div>${stepBody(i,step)}</section>
+   <div class="unav">
+    <button class="btn ghost sm" id="prevStep" ${si===0?'disabled':''}>${ic('arrowL')}Kembali</button>
+    ${si<steps.length-1?`<button class="btn sm" id="nextStep">Seterusnya${ic('arrowR')}</button>`:(S.done[i]?(i<6?`<button class="btn sm" id="nextUnit">Unit seterusnya${ic('arrowR')}</button>`:`<button class="btn accent sm" id="toPf">${ic('trophy')}Lihat sijil</button>`):'')}
+   </div></div>`;
+  const go=k=>goStep(i,k);
+  main.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>go(+b.dataset.step));
+  const pv=document.getElementById('prevStep');if(pv)pv.onclick=()=>go(si-1);
+  const nx=document.getElementById('nextStep');if(nx)nx.onclick=()=>go(si+1);
+  const nu=document.getElementById('nextUnit');if(nu)nu.onclick=()=>nav('unit-'+(i+1));
+  const tp=document.getElementById('toPf');if(tp)tp.onclick=()=>nav('portfolio');
+  main.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>go(+b.dataset.goto));
+  bindStep(i,step);
+  renderBar();
+}
+function scrollToSteps(){const el=document.getElementById('stepBody');if(!el)return;const top=el.getBoundingClientRect().top;if(top<80||top>innerHeight*.6)el.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})}
+function stepBody(i,step){
+  const u=U[i];
+  if(step==='teori')return `<div class="theory">${u.theory}</div>`;
+  if(GAMES[step])return gameHTML(step);
+  if(step==='misi')return u.mission();
+  return finishHTML(i);
+}
+function bindStep(i,step){
+  if(GAMES[step])bindGames();
+  if(step==='misi'){bindFields();bindPrompts();if(U[i].after)U[i].after()}
+  if(step==='lencana')bindFinish(i);
+}
+
+/* ---------- fields & prompts ---------- */
+function field(k,label,opt={}){
+  const val=esc(S.f[k]||'');const hint=opt.hint?`<small>${opt.hint}</small>`:'';
+  const ctl=opt.area?`<textarea id="f_${k}" data-f="${k}" placeholder="${esc(opt.ph||'')}">${val}</textarea>`
+    :`<input type="text" id="f_${k}" data-f="${k}" value="${val}" placeholder="${esc(opt.ph||'')}">`;
+  return `<label class="f" for="f_${k}">${label}${hint}${ctl}</label>`;
+}
+function bindFields(){main.querySelectorAll('[data-f]').forEach(el=>el.addEventListener('input',()=>{S.f[el.dataset.f]=el.value;save();refreshLive();updateStepDots()}))}
+function updateStepDots(){if(route.name!=='unit')return;renderSide();const i=route.i,steps=stepsOf(i);const k=steps.indexOf('misi');if(stepIdx[i]===k)return;const b=main.querySelector(`[data-step="${k}"]`);if(!b)return;const ok=missingFields(i).length===0;b.classList.toggle('ok',ok);b.querySelector('.dot').textContent=ok?'✓':k+1}
+function promptBox(id,label,note){
+  return `<div class="prompt"><div class="prompt-h"><b>${ic('sparkle')}${label}</b><span class="row"><span class="copied" id="cp_${id}" hidden>Disalin</span><button class="btn accent sm" data-copy="${id}">${ic('copy')}Salin Prompt</button></span></div>
+   <p class="prompt-t" data-prompt="${id}"></p><textarea data-fallback="${id}" hidden readonly></textarea>
+   <p class="ai-links">${note?note+' ':''}Tampal di tool AI yang dibenarkan guru: <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a> · <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot</a> · <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a></p></div>`;
+}
+const promptHTML=t=>esc(t).replace(/⟦([^⟧]*)⟧/g,'<mark>$1</mark>');
+function refreshLive(){
+  main.querySelectorAll('[data-prompt]').forEach(el=>{el.innerHTML=promptHTML(P[el.dataset.prompt]())});
+  main.querySelectorAll('[data-live="stmt"]').forEach(el=>{el.innerHTML=promptHTML(stmt())});
+}
+function bindPrompts(){
+  refreshLive();
+  main.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.copy,txt=P[id](),c=document.getElementById('cp_'+id);
+    const say=(t,col)=>{c.textContent=t;c.style.color=col||'';c.hidden=false};
+    if(txt.includes('⟦')&&!b.dataset.warned){b.dataset.warned=1;say('Ada ruang kosong (kuning). Isi dahulu, atau tekan sekali lagi.','#FFD56B');return}
+    const fb=()=>{const ta=main.querySelector(`[data-fallback="${id}"]`);ta.hidden=false;ta.value=txt;ta.focus();ta.select();say('Teks dipilih. Tekan Ctrl+C untuk salin.')};
+    try{navigator.clipboard.writeText(txt).then(()=>{say('Disalin');setTimeout(()=>c.hidden=true,1800)}).catch(fb)}catch(e){fb()}
+  });
+}
+
+/* ---------- missions ---------- */
+function missionStart(){
+  const p=persona();
+  const detail=p&&p.id!=='sendiri'?`<div class="pdetail" style="--pc:${p.c}"><div class="row"><span class="av" style="background:${p.c}">${ic(p.i)}</span><div style="min-width:0"><span class="eyebrow">Kad dipilih</span><h3>${p.fokus}: ${esc(p.watak)}</h3></div></div>
+     <dl><div><dt>Situasi</dt><dd>${esc(cap(p.situasi))}.</dd></div><div><dt>Apa dia rasa</dt><dd><i>${esc(p.rasa)}</i></dd></div><div><dt>Soalan pencetus</dt><dd>${esc(p.soalan)}</dd></div><div><dt>Petunjuk teknologi</dt><dd>${esc(p.tek)}</dd></div></dl></div>`:'';
+  const own=p&&p.id==='sendiri'?`<div class="pdetail"><p><b>Pilih fokus lain</b> yang masih dalam tema Kelas Selesa, atau tulis sendiri.</p>
+     <div class="opts">${EXTRA_FOKUS.map(x=>`<button class="opt" data-xf="${esc(x)}" aria-pressed="${v('fokus')===x}">${esc(x)}</button>`).join('')}</div>
+     ${field('fokus','Fokus kamu',{ph:'cth. Kelas terlalu silau waktu pagi'})}</div>`:'';
+  return `<div class="grid2">${field('name','Nama panggilan kamu',{ph:'cth. Aina'})}</div>
+  <div class="sub"><span class="num">1</span>Pilih fokus Kelas Selesa</div>
+  <p class="note">Apa yang paling buat kelas tak selesa? Pilih satu kad, atau pilih fokus sendiri dalam tema ini.</p>
+  <div class="persona">${PERSONAS.map(x=>`<button class="pcard" data-persona="${x.id}" aria-pressed="${S.persona===x.id}"><span class="av" style="background:${x.c}">${ic(x.i)}</span><b>${x.id==='sendiri'?'Pilih sendiri':x.fokus}</b><span>${esc(x.ringkas)}</span>${x.watak?`<span><b style="font-size:.85rem;font-family:var(--f-body)">${esc(x.watak)}</b></span>`:''}</button>`).join('')}</div>
+  ${detail}${own}
+  ${p?`<div class="sub"><span class="num">2</span>Semak pengguna</div>
+  <div class="grid2">${field('pengguna','Pengguna',{ph:'cth. pelajar Tingkatan 3'})}${field('situasi','Situasi pengguna',{ph:'cth. belajar selepas rehat di kelas tingkat atas'})}</div>
+  <p class="note">Kamu boleh ubah pengguna dan situasi ikut keadaan sebenar di sekolah kamu.</p>`:''}`;
+}
+U[0].after=()=>{
+  const nm=main.querySelector('[data-f="name"]');nm.addEventListener('input',()=>{S.name=nm.value.trim();save()});
+  main.querySelectorAll('[data-persona]').forEach(b=>b.onclick=()=>{
+    const p=PERSONAS.find(x=>x.id===b.dataset.persona);const was=S.persona;S.persona=p.id;
+    if(p.id!=='sendiri'){S.f.fokus=p.fokus;S.f.pengguna=p.pengguna;S.f.situasi=p.situasi}
+    else if(was!=='sendiri'){S.f.fokus='';S.f.pengguna='';S.f.situasi=''}
+    save();renderUnit();
+  });
+  main.querySelectorAll('[data-xf]').forEach(b=>b.onclick=()=>{S.f.fokus=b.dataset.xf;save();renderUnit()});
+};
+function missionEmpathy(){
+  const p=persona();const hint=p&&p.id!=='sendiri'?`<p class="bubble"><b>Fokus ${p.fokus}:</b> <i>${esc(p.rasa)}</i><br><b>Soalan pencetus:</b> ${esc(p.soalan)}</p>`:v('fokus')?`<p class="bubble"><b>Fokus kamu:</b> ${esc(v('fokus'))}. Bayangkan siapa paling terkesan dan bila ia berlaku.</p>`:'';
+  return `${hint}<div class="sub"><span class="num">1</span>Isi 5W1H</div><div class="grid2">
+   ${field('w_who','Who – Siapa pengguna?',{ph:cap(v('pengguna'))})}${field('w_what','What – Apa masalah mereka?')}
+   ${field('w_when','When – Bila masalah berlaku?')}${field('w_where','Where – Di mana berlaku?')}
+   ${field('w_why','Why – Kenapa berlaku?')}${field('w_how','How – Bagaimana keadaan sekarang?')}</div>
+   <div class="sub"><span class="num">2</span>Minta AI semak</div>${promptBox('empathy','Semak 5W1H aku')}
+   <div class="sub"><span class="num">3</span>Catat</div>${field('e_ai','Satu perkara baharu yang aku dapat daripada AI',{area:1,ph:'cth. AI ingatkan guru pun terkesan dengan panas'})}`;
+}
+function missionDefine(){
+  [['d_apa','w_what'],['d_bila','w_when'],['d_mana','w_where'],['d_kenapa','w_why']].forEach(([a,b])=>{if(!v(a)&&v(b))S.f[a]=v(b)});save();
+  return `<div class="sub"><span class="num">1</span>Ringkaskan 5W1H</div><p class="note">Ruang sudah diisi daripada 5W1H kamu.</p>
+   <div class="grid2">${field('d_apa','Masalah (apa)')}${field('d_bila','Semasa (bila)')}${field('d_mana','Di (mana)')}${field('d_kenapa','Kerana (kenapa)')}</div>
+   <p class="statement" data-live="stmt"></p>
+   <div class="sub"><span class="num">2</span>Minta AI nilai</div>${promptBox('define','Nilai penyataan masalah aku')}
+   <div class="sub"><span class="num">3</span>Versi akhir</div>${field('d_final','Penyataan masalah akhir aku',{area:1,hint:'Salin ayat di atas atau versi yang kamu baiki.'})}`;
+}
+function missionIdeate(){
+  return `<div class="sub"><span class="num">1</span>Jana 5 idea</div>${promptBox('ideate','Prompt RTF','Idea Sprint kamu dimasukkan sekali.')}
+   <div class="grid2">${field('i_idea','Idea yang aku pilih',{ph:'cth. kipas ekzos automatik'})}${field('i_why','Kenapa aku pilih idea ini',{ph:'cth. senang guna'})}</div>
+   <div class="sub"><span class="num">2</span>Tambah baik</div>${promptBox('scamper','SCAMPER + Chain-of-Thought')}
+   <div class="grid2">${field('i_c1','Ciri baharu 1')}${field('i_c2','Ciri baharu 2')}</div>
+   <details><summary>${ic('star')}Latihan tambahan: Juri Garang (tiada markah)</summary><div style="display:grid;gap:12px;margin-top:10px">${promptBox('juri','Cari kelemahan')}${field('i_juri','Kelemahan yang aku baiki',{area:1})}</div></details>`;
+}
+function missionPrototype(){
+  if(!v('p_c1')&&v('i_c1'))S.f.p_c1=v('i_c1');if(!v('p_c2')&&v('i_c2'))S.f.p_c2=v('i_c2');save();
+  return `<div class="sub"><span class="num">1</span>Lakaran tangan</div>
+   <canvas class="pad" id="pad" width="900" height="600" aria-label="Ruang lakaran"></canvas>
+   <div class="row"><button class="btn ghost sm" id="padClear">${ic('eraser')}Padam</button><span class="note" id="padNote">${S.sketch?'Lakaran disimpan.':'Lukis dengan jari atau tetikus.'}</span></div>
+   <div class="sub"><span class="num">2</span>Kotak Ciri Produk</div>
+   <div class="grid2">${field('p_nama','Nama produk',{ph:'cth. SejukSmart'})}${field('p_bentuk','Bentuk',{ph:'cth. kotak segi empat'})}${field('p_saiz','Saiz',{ph:'cth. 30 cm x 30 cm'})}${field('p_warna','Warna',{ph:'cth. putih dan biru'})}${field('p_bahan','Bahan',{ph:'cth. plastik ABS + panel solar'})}${field('p_c1','Ciri 1')}${field('p_c2','Ciri 2')}${field('p_c3','Ciri 3')}</div>
+   <div class="sub"><span class="num">3</span>Prompt gambar</div>${promptBox('visual','Gambar produk','Guna tool AI yang boleh jana gambar.')}
+   <label class="f" for="imgUp">Muat naik gambar AI kamu (pilihan)<input type="file" id="imgUp" accept="image/*"></label>
+   ${S.image?`<img class="upimg" src="${S.image}" alt="Gambar produk daripada AI">`:''}
+   ${field('p_ubah','Apa yang aku ubah selepas lihat gambar AI',{area:1})}`;
+}
+U[4].after=()=>{
+  const c=document.getElementById('pad'),x=c.getContext('2d');
+  x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);
+  if(S.sketch){const im=new Image();im.onload=()=>x.drawImage(im,0,0,c.width,c.height);im.src=S.sketch}
+  x.lineCap='round';x.lineJoin='round';x.lineWidth=6;x.strokeStyle='#0F2F45';
+  let drawing=false;const pt=e=>{const r=c.getBoundingClientRect();return [(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};
+  c.addEventListener('pointerdown',e=>{drawing=true;c.setPointerCapture(e.pointerId);const [a,b]=pt(e);x.beginPath();x.moveTo(a,b)});
+  c.addEventListener('pointermove',e=>{if(!drawing)return;const [a,b]=pt(e);x.lineTo(a,b);x.stroke()});
+  const end=()=>{if(!drawing)return;drawing=false;S.sketch=c.toDataURL('image/jpeg',.7);save();document.getElementById('padNote').textContent=saveWarn?'Storan penuh, lakaran tidak disimpan.':'Lakaran disimpan.'};
+  c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);
+  document.getElementById('padClear').onclick=()=>{x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);S.sketch='';save();document.getElementById('padNote').textContent='Lakaran dipadam.'};
+  document.getElementById('imgUp').onchange=e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();
+    r.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(1,640/Math.max(im.width,im.height));const cv=document.createElement('canvas');cv.width=Math.round(im.width*s);cv.height=Math.round(im.height*s);cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);S.image=cv.toDataURL('image/jpeg',.8);save();renderUnit()};im.src=r.result};r.readAsDataURL(file)};
+};
+function missionTest(){
+  const who=S.f.t_siapa||'';
+  return `<p class="note">Pilihan A: tunjuk produk kepada kawan, keluarga atau guru. Pilihan B: minta AI berlakon sebagai pengguna.</p>
+   ${promptBox('test','AI sebagai pengguna')}
+   <label class="f" for="f_t_siapa">Siapa beri maklum balas?<select id="f_t_siapa" data-f="t_siapa"><option value="">Pilih…</option>${['Kawan','Keluarga','Guru','AI (berlakon sebagai pengguna)'].map(o=>`<option ${who===o?'selected':''}>${o}</option>`).join('')}</select></label>
+   <div class="grid2">${field('t_suka','Saya suka…')}${field('t_risau','Saya risau…')}${field('t_kalau','Bagaimana kalau…')}</div>
+   ${field('t_baiki','Penambahbaikan yang aku buat',{area:1})}`;
+}
+function missionPitch(){
+  return `<div class="sub"><span class="num">1</span>Skrip pitch</div>
+   <div class="grid2">${field('h_cara','Cara produk berfungsi',{area:1})}${field('h_unik','Apa yang unik',{area:1})}</div>
+   ${field('h_slogan','Slogan',{ph:'cth. Kelas sejuk, minda fokus.'})}
+   ${promptBox('pitch','Kemaskan skrip pitch')}
+   ${field('h_skrip','Skrip pitch akhir (pilihan)',{area:1})}
+   <div class="sub"><span class="num">2</span>Refleksi</div>
+   <div class="grid2">${field('r_ai','AI bantu aku dalam…')}${field('r_saya','Tetapi aku sendiri yang…')}</div>`;
+}
+
+/* ---------- games (sekali jawab, markah dikunci) ---------- */
+const ans={};
+const attempted=id=>!!(S.games[id]&&typeof S.games[id]==='object');
+function scoreTag(id){const r=S.games[id];return `<span class="st-state done">${r.score}/${r.max} markah</span>`}
+function gameHTML(id){
+  const g=GAMES[id],done=attempted(id),r=S.games[id]||{};
+  const head=`<div class="row">${done?scoreTag(id):`<span class="st-state now">Maks ${gMax(id)} markah</span>`}</div>`;
+  const once=done?`<p class="result ok">${ic('lock')}Jawapan sudah dihantar. Markah kamu: ${r.score}/${r.max}. Tekan Seterusnya untuk sambung.</p>`
+    :`<p class="bubble"><b>Perhatian:</b> game ini hanya boleh dijawab <b>sekali</b>. Markah terus dikira dan tidak boleh diubah.</p>`;
+  if(g.type==='classify'){
+    const a=done?r.ans:(ans[id]||{});
+    return head+`<p>${g.intro}</p>${once}<div class="qs">`+g.items.map((it,qi)=>{
+      const cls=done?(a[qi]===it.a?'right':'wrong'):'';
+      return `<div class="q ${cls}" id="q_${id}_${qi}"><span class="q-t">${qi+1}. ${esc(it.t)}</span><div class="opts">${it.o.map((o,oi)=>`<button class="opt" data-g="${id}" data-q="${qi}" data-o="${oi}" aria-pressed="${a[qi]===oi}" ${done?'disabled':''}>${esc(o)}${done&&oi===it.a&&a[qi]!==it.a?' ✓':''}</button>`).join('')}</div></div>`}).join('')+
+     `</div>${done?'':`<div class="row"><button class="btn accent" data-check="${id}">${ic('check')}Hantar jawapan</button><span class="note">10 markah setiap jawapan betul</span></div>`}<div id="res_${id}" aria-live="polite"></div>`;
+  }
+  if(g.type==='sprint'){
+    if(done)return head+once+`<div class="ideas">${(r.ideas||[]).map(i=>`<span class="idea">${esc(i)}</span>`).join('')}</div>`;
+    return head+`<p>Tulis seberapa banyak idea untuk masalah kamu dalam 60 saat. 10 markah setiap idea (maksimum ${SPRINT_MAX} idea). Masa hanya boleh dimulakan sekali.</p>${once}
+     <div class="row"><div class="timer" id="tm" style="--pct:100%"><span id="tmN">60</span></div><button class="btn accent" id="tmStart">${ic('play')}Mula</button></div>
+     <div class="row"><input type="text" id="ideaIn" aria-label="Idea baharu" placeholder="Taip idea, tekan Enter" style="flex:1;min-width:0" disabled><button class="btn sm" id="ideaAdd" disabled>Tambah</button></div>
+     <div class="ideas" id="ideaList"></div><div id="res_${id}" aria-live="polite"></div>`;
+  }
+  const picked=done?new Set(r.chips):new Set();
+  return head+`<p>Pilih elemen yang patut ada dalam prompt gambar, kemudian hantar. +10 markah setiap elemen betul, −10 setiap elemen yang tak perlu atau tak selamat.</p>${once}
+     <div class="opts">${[...BUILDER_GOOD.map((b,i)=>['g'+i,b[0]]),...BUILDER_BAD.map((b,i)=>['b'+i,b[0]])].sort((a,b)=>a[1].localeCompare(b[1])).map(([k,l])=>`<button class="opt" data-chip="${k}" aria-pressed="${picked.has(k)}" ${done?'disabled':''}>${esc(l)}${done&&k[0]==='b'&&picked.has(k)?' ✗':''}</button>`).join('')}</div>
+     <p class="sample" id="builderSample">${done?esc(r.sample||''):'Prompt kamu akan muncul di sini.'}</p>
+     ${done?'':`<div class="row"><button class="btn accent" id="builderSend">${ic('check')}Hantar prompt</button><span class="note" id="builderCount">0 elemen dipilih</span></div>`}<div id="res_${id}" aria-live="polite"></div>`;
+}
+function submit(id,data){
+  if(attempted(id))return;S.games[id]=Object.assign({max:gMax(id),at:new Date().toISOString()},data);save();renderBar();
+  burst(Math.round(20+120*data.score/gMax(id)));if(route.name==='unit')renderUnit();
+}
+function bindGames(){
+  main.querySelectorAll('.opt[data-g]:not([disabled])').forEach(b=>b.onclick=()=>{const {g,q,o}=b.dataset;ans[g]=ans[g]||{};ans[g][q]=+o;
+    main.querySelectorAll(`.opt[data-g="${g}"][data-q="${q}"]`).forEach(x=>x.setAttribute('aria-pressed',x===b))});
+  main.querySelectorAll('[data-check]').forEach(b=>{let armed=false;b.onclick=()=>{
+    const id=b.dataset.check,g=GAMES[id],a=ans[id]||{},res=document.getElementById('res_'+id),n=Object.keys(a).length;
+    if(n<g.items.length){res.innerHTML=`<p class="result no">${ic('alert')}Jawab semua ${g.items.length} soalan dahulu (${n} dijawab).</p>`;return}
+    if(!armed){armed=true;b.innerHTML=ic('check')+'Pasti? Tekan sekali lagi untuk hantar';res.innerHTML=`<p class="note">Selepas dihantar, jawapan tidak boleh diubah.</p>`;return}
+    let sc=0;g.items.forEach((it,qi)=>{if(a[qi]===it.a)sc++});
+    submit(id,{score:sc*PTS,ans:Object.assign({},a)});
+  }});
+  if(document.getElementById('tm'))bindSprint();
+  if(document.getElementById('builderSend'))bindBuilder();
+}
+function refreshUnitChrome(){}
+let tmr=null;
+function finishSprint(){clearInterval(tmr);tmr=null;const ideas=S.sprint.slice();S.sprintStarted=0;submit('g3a',{score:Math.min(ideas.length,SPRINT_MAX)*PTS,ideas})}
+function bindSprint(){
+  const tm=document.getElementById('tm'),tn=document.getElementById('tmN'),inp=document.getElementById('ideaIn'),add=document.getElementById('ideaAdd'),list=document.getElementById('ideaList'),st=document.getElementById('tmStart');
+  const draw=()=>{list.innerHTML=S.sprint.map(i=>`<span class="idea">${esc(i)}</span>`).join('')};
+  const push=()=>{const t=inp.value.trim();if(!t||!tmr)return;S.sprint.push(t);inp.value='';save();draw();inp.focus()};
+  add.onclick=push;inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();push()}};
+  st.onclick=()=>{if(tmr)return;S.sprint=[];S.sprintStarted=Date.now();save();draw();st.disabled=true;inp.disabled=add.disabled=false;inp.focus();
+    tmr=setInterval(()=>{const t=Math.max(0,60-Math.floor((Date.now()-S.sprintStarted)/1000));tn.textContent=t;tm.style.setProperty('--pct',(t/60*100)+'%');if(t<=0)finishSprint()},250)};
+}
+function bindBuilder(){
+  const sel=new Set(),sm=document.getElementById('builderSample'),cnt=document.getElementById('builderCount'),send=document.getElementById('builderSend'),res=document.getElementById('res_g4');let armed=false;
+  main.querySelectorAll('[data-chip]').forEach(b=>b.onclick=()=>{const k=b.dataset.chip;sel.has(k)?sel.delete(k):sel.add(k);b.setAttribute('aria-pressed',sel.has(k));armed=false;send.innerHTML=ic('check')+'Hantar prompt';
+    const parts=BUILDER_GOOD.filter((_,i)=>sel.has('g'+i)).map(x=>x[1]);sm.textContent=parts.length?'Hasilkan '+parts.join(', ')+'.':'Prompt kamu akan muncul di sini.';cnt.textContent=sel.size+' elemen dipilih'});
+  send.onclick=()=>{if(!sel.size){res.innerHTML=`<p class="result no">${ic('alert')}Pilih sekurang-kurangnya satu elemen.</p>`;return}
+    if(!armed){armed=true;send.innerHTML=ic('check')+'Pasti? Tekan sekali lagi untuk hantar';return}
+    const good=[...sel].filter(k=>k[0]==='g').length,bad=sel.size-good;
+    submit('g4',{score:Math.max(0,(good-bad)*PTS),chips:[...sel],sample:sm.textContent})};
+}
+
+/* ---------- finish ---------- */
+const LABELS={name:'nama panggilan',persona:'Kad Fokus',fokus:'fokus',pengguna:'pengguna',situasi:'situasi',w_who:'Who',w_what:'What',w_when:'When',w_where:'Where',w_why:'Why',w_how:'How',e_ai:'perkara daripada AI',d_apa:'masalah',d_bila:'bila',d_mana:'di mana',d_kenapa:'sebab',d_final:'penyataan masalah akhir',i_idea:'idea dipilih',i_why:'sebab pilih',i_c1:'ciri baharu 1',i_c2:'ciri baharu 2',p_nama:'nama produk',p_bentuk:'bentuk',p_saiz:'saiz',p_warna:'warna',p_bahan:'bahan',p_c1:'ciri 1',p_c2:'ciri 2',p_c3:'ciri 3',p_ubah:'perubahan selepas gambar AI',t_siapa:'siapa beri maklum balas',t_suka:'Saya suka',t_risau:'Saya risau',t_kalau:'Bagaimana kalau',t_baiki:'penambahbaikan',h_cara:'cara berfungsi',h_unik:'keunikan',h_slogan:'slogan',r_ai:'refleksi AI',r_saya:'refleksi diri'};
+function missingFields(i){return U[i].req.filter(k=>!(k==='name'?S.name:k==='persona'?S.persona:v(k))).map(k=>LABELS[k])}
+function missingAll(i){return [...U[i].games.filter(g=>!attempted(g)).map(g=>'Game: '+GAMES[g].title),...missingFields(i).map(x=>'Misi: '+x)]}
+function checklist(i){
+  const steps=stepsOf(i),items=U[i].games.map(g=>({t:GAMES[g].title,ok:attempted(g),n:attempted(g)?0:1,step:steps.indexOf(g),msg:attempted(g)?`Selesai · ${S.games[g].score}/${gMax(g)} markah`:'Belum: Game: '+GAMES[g].title}));
+  const mf=missingFields(i);items.push({t:META[i].misiTitle,ok:!mf.length,n:mf.length,step:steps.indexOf('misi'),msg:mf.length?'Belum: '+mf.map(cap).join(', '):'Selesai'});
+  return items;
+}
+function finishHTML(i){
+  const u=U[i],items=checklist(i),n=items.reduce((t,x)=>t+x.n,0),got=!!S.done[i];
+  const sc=u.games.reduce((t,g)=>t+(attempted(g)?S.games[g].score:0),0),mx=u.games.reduce((t,g)=>t+gMax(g),0);
+  return `<div class="await ${got?'got':''}"><span class="await-m" ${got?`style="background:${u.color}"`:''}>${ic(got?u.icon:'medal')}</span><div style="display:grid;gap:2px;min-width:0">
+     <b>${got?'Lencana '+BADGES[i]+' diperoleh!':'Lencana '+BADGES[i]+' menanti kamu'}</b>
+     <p class="note">${got?`Markah unit ini: ${sc}/${mx}. Kamu boleh kemas kini jawapan misi bila-bila masa.`:'Lengkapkan semua perkara wajib untuk terima lencana.'}</p></div></div>
+   <div class="checks">${items.map(x=>`<div class="chk ${x.ok?'ok':''}"><span class="chk-c">${x.ok?ic('check'):''}</span><div class="chk-t"><b>${esc(x.t)}</b><small>${esc(x.msg)}</small></div><button class="chk-go" data-goto="${x.step}">Pergi${ic('arrowR')}</button></div>`).join('')}</div>
+   ${got?'':`<div><button class="btn" id="complete" ${n?'disabled':''}>${ic('sparkle')}${n?n+' perkara lagi':'Terima lencana'}</button></div>`}
+   ${saveWarn?'<p class="miss-item">Storan browser penuh atau disekat. Kemajuan mungkin tidak disimpan.</p>':''}`;
+}
+function bindFinish(i){const b=document.getElementById('complete');if(!b)return;
+  b.onclick=()=>{S.done[i]=1;let bonus='';
+    if(i===6&&!S.finishedAt)S.finishedAt=new Date().toISOString();save();renderBar();renderUnit();showBadge(i,bonus)}}
+function showBadge(i,bonus){
+  const u=U[i],root=document.getElementById('modalRoot');
+  root.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="modal-c">
+    <div class="medal" style="background:${u.color}">${ic(u.icon)}</div><span class="eyebrow">Lencana baharu</span>
+    <h2 id="mTitle">${BADGES[i]}</h2><p class="note">Markah unit: ${U[i].games.reduce((t,g)=>t+(S.games[g]?S.games[g].score:0),0)} · Jumlah: ${total()}/${MAXALL()}</p>
+    <button class="btn accent" id="mGo">${i<6?'Teruskan ke '+U[i+1].short:'Lihat sijil'}${ic('arrowR')}</button>
+    <button class="btn ghost sm" id="mClose">Tutup</button></div></div>`;
+  burst(140);
+  const close=()=>{root.innerHTML=''};
+  document.getElementById('mGo').onclick=()=>{close();nav(i<6?'unit-'+(i+1):'portfolio')};
+  document.getElementById('mClose').onclick=close;
+  root.querySelector('.modal').onclick=e=>{if(e.target.classList.contains('modal'))close()};
+  root.querySelector('.modal').onkeydown=e=>{if(e.key==='Escape')close()};
+  document.getElementById('mGo').focus();
+}
+
+/* confetti */
+function burst(n){
+  if(RM)return;const c=document.getElementById('confetti'),x=c.getContext('2d');c.hidden=false;
+  c.width=innerWidth;c.height=innerHeight;const cols=['#22A9B8','#1672C4','#FFC63A','#F07B1D','#DE4F78','#1B8E59'];
+  const ps=Array.from({length:n},()=>({x:c.width/2+(Math.random()-.5)*120,y:c.height*.45,vx:(Math.random()-.5)*12,vy:-Math.random()*14-4,s:Math.random()*7+5,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[Math.random()*cols.length|0]}));
+  let f=0;(function tick(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()});
+    if(++f<110)requestAnimationFrame(tick);else{x.clearRect(0,0,c.width,c.height);c.hidden=true}})();
+}
+
+/* ---------- portfolio ---------- */
+/* ---------- muat turun sijil & portfolio ---------- */
+let DL=null;
+try{if(window.claude&&typeof window.claude.use==='function')window.claude.use('downloads').then(x=>{DL=x}).catch(()=>{})}catch(e){}
+function certInfo(){const d=S.finishedAt?new Date(S.finishedAt):new Date();
+  return {date:d.toLocaleDateString('ms-MY',{day:'numeric',month:'long',year:'numeric'}),
+   code:'JI-'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+String(total()).padStart(3,'0')}}
+const fileBase=()=>('JejakInovator-'+(S.name||'pelajar')).replace(/[^\w\-]+/g,'_');
+async function offerFile(name,blob,msgEl){
+  const say=(t,ok)=>{if(msgEl){msgEl.textContent=t;msgEl.style.color=ok?'var(--good)':'var(--bad)';msgEl.hidden=false}};
+  if(DL){try{await DL.save({filename:name,data:blob});say('Fail disimpan: '+name,true);return}
+    catch(e){const c=e&&e.code;if(c==='declined'){say('Muat turun dibatalkan.');return}if(c==='rate_limited'){say('Tunggu sebentar, kemudian cuba lagi.');return}}}
+  try{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);say('Muat turun dimulakan: '+name,true)}
+  catch(e){say('Muat turun tidak dapat dibuat di sini. Tangkap skrin sebagai ganti.')}
+}
+function wrapText(x,text,maxW){const words=String(text).split(' '),lines=[];let line='';
+  words.forEach(w=>{const t=line?line+' '+w:w;if(x.measureText(t).width>maxW&&line){lines.push(line);line=w}else line=t});if(line)lines.push(line);return lines}
+async function drawCert(){
+  try{await Promise.all(['800 64px "Bricolage Grotesque"','600 28px "Plus Jakarta Sans"','400 28px "Plus Jakarta Sans"'].map(f=>document.fonts.load(f)))}catch(e){}
+  const W=2000,H=1414,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  const D='"Bricolage Grotesque","Trebuchet MS",sans-serif',B='"Plus Jakarta Sans","Segoe UI",sans-serif',info=certInfo();
+  x.fillStyle='#FFFFFF';x.fillRect(0,0,W,H);
+  const g=x.createLinearGradient(0,0,W,0);g.addColorStop(0,'#0A6A9C');g.addColorStop(1,'#14A0B8');
+  x.fillStyle=g;x.fillRect(0,0,W,26);x.fillRect(0,H-26,W,26);
+  x.strokeStyle='#FFC63A';x.lineWidth=14;x.strokeRect(60,70,W-120,H-140);
+  x.strokeStyle='#D6E6EE';x.lineWidth=3;x.strokeRect(90,100,W-180,H-200);
+  // seal
+  x.save();x.translate(W/2,250);x.fillStyle='#FFC63A';x.beginPath();x.arc(0,0,80,0,Math.PI*2);x.fill();
+  x.strokeStyle='#fff';x.lineWidth=5;x.setLineDash([10,9]);x.beginPath();x.arc(0,0,62,0,Math.PI*2);x.stroke();x.setLineDash([]);
+  x.fillStyle='#fff';x.beginPath();for(let k=0;k<10;k++){const r=k%2?18:42,a=-Math.PI/2+k*Math.PI/5;x.lineTo(Math.cos(a)*r,Math.sin(a)*r)}x.closePath();x.fill();x.restore();
+  x.textAlign='center';x.fillStyle='#46667A';x.font=`700 30px ${B}`;
+  x.fillText('S I J I L   P E N Y E R T A A N',W/2,405);
+  x.fillStyle='#0F2F45';x.font=`400 34px ${B}`;x.fillText('Dengan ini disahkan bahawa',W/2,490);
+  x.fillStyle='#0A5D80';let fs=120;x.font=`800 ${fs}px ${D}`;const nm=S.name||'Inovator';while(x.measureText(nm).width>W-400&&fs>60){fs-=6;x.font=`800 ${fs}px ${D}`}
+  x.fillText(nm,W/2,630);
+  x.strokeStyle='#FFC63A';x.lineWidth=4;x.beginPath();x.moveTo(W/2-360,670);x.lineTo(W/2+360,670);x.stroke();
+  x.fillStyle='#0F2F45';x.font=`400 34px ${B}`;
+  x.fillText('telah melengkapkan modul',W/2,750);
+  x.font=`800 50px ${D}`;x.fillText('Jejak Inovator: Design Thinking + AI',W/2,820);
+  x.font=`400 34px ${B}`;
+  const l=wrapText(x,`dengan inovasi "${v('p_nama')||'-'}" bagi masalah ${(v('fokus')||'kelas').toLowerCase()} di dalam kelas, untuk ${v('pengguna')||'pengguna'}.`,W-500);
+  l.slice(0,2).forEach((t,k)=>x.fillText(t,W/2,895+k*48));
+  // score pill
+  const pill=`${total()} / ${MAXALL()} markah  ·  Tahap: ${levelOf(total())}`;x.font=`700 36px ${B}`;const pw=x.measureText(pill).width+80;
+  x.fillStyle='#FFF2CC';x.beginPath();x.roundRect(W/2-pw/2,1010,pw,72,36);x.fill();x.fillStyle='#6E4A00';x.fillText(pill,W/2,1058);
+  x.fillStyle='#46667A';x.font=`500 28px ${B}`;x.fillText(`${info.date}   ·   No. ${info.code}`,W/2,1170);
+  x.font=`400 24px ${B}`;x.fillText('Kelas Selesa · Modul kendiri Design Thinking + AI',W/2,1225);
+  return c;
+}
+const toBlob=(c,type,q)=>new Promise(r=>c.toBlob(r,type,q));
+async function downloadCert(btn,msg){btn.disabled=true;try{const c=await drawCert();await offerFile(fileBase()+'-Sijil.png',await toBlob(c,'image/png'),msg)}finally{btn.disabled=false}}
+const pdfSafe=t=>String(t??'').replace(/[—–]/g,'-').replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/…/g,'...').replace(/×/g,'x').replace(/₂/g,'2').replace(/[^\x00-\xFF]/g,'');
+async function downloadPortfolio(btn,msg){
+  btn.disabled=true;
+  try{
+    if(!(window.jspdf&&window.jspdf.jsPDF)){await offerFile(fileBase()+'-Portfolio.txt',new Blob([portfolioText()],{type:'text/plain'}),msg);return}
+    const doc=new window.jspdf.jsPDF({unit:'mm',format:'a4'}),PW=210,PH=297,M=18,CW=PW-2*M;let y=M;
+    const need=h=>{if(y+h>PH-M){doc.addPage();y=M}};
+    const head=t=>{need(14);doc.setFillColor(231,241,246);doc.roundedRect(M,y,CW,9,2,2,'F');doc.setFont('helvetica','bold');doc.setFontSize(11.5);doc.setTextColor(10,93,128);doc.text(pdfSafe(t),M+3,y+6.2);y+=13};
+    const kv=(k,val)=>{if(!val)return;const lines=doc.splitTextToSize(pdfSafe(val),CW-42);need(lines.length*5+3);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(70,102,122);doc.text(pdfSafe(k).toUpperCase(),M,y);doc.setFont('helvetica','normal');doc.setFontSize(10.5);doc.setTextColor(15,47,69);doc.text(lines,M+42,y);y+=lines.length*5+3};
+    // cover band
+    doc.setFillColor(10,106,156);doc.rect(0,0,PW,42,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('PORTFOLIO INOVASI  ·  JEJAK INOVATOR',M,15);
+    doc.setFontSize(22);doc.text(pdfSafe(v('p_nama')||'Inovasi aku'),M,27);doc.setFont('helvetica','normal');doc.setFontSize(11);doc.text(pdfSafe(`${S.name||'Pelajar'}  ·  Fokus: ${v('fokus')||'-'}  ·  ${total()}/${MAXALL()} markah (${levelOf(total())})`),M,35);y=54;
+    head('Kad Markah');
+    Object.keys(GAMES).forEach(k=>{const ui=U.findIndex(u=>u.games.includes(k));need(7);doc.setFont('helvetica','normal');doc.setFontSize(10.5);doc.setTextColor(15,47,69);doc.text(pdfSafe(`${GAMES[k].title} (${U[ui].short})`),M,y);doc.text(attempted(k)?`${S.games[k].score}/${gMax(k)}`:'Belum dijawab',PW-M,y,{align:'right'});doc.setDrawColor(214,230,238);doc.line(M,y+2,PW-M,y+2);y+=7});
+    need(9);doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(10,93,128);doc.text('Jumlah',M,y+2);doc.text(`${total()}/${MAXALL()}`,PW-M,y+2,{align:'right'});y+=11;
+    head('1. Empathize');kv('Fokus',v('fokus'));kv('Pengguna',cap(v('pengguna'))+(v('situasi')?' - '+v('situasi'):''));
+    [['Who','w_who'],['What','w_what'],['When','w_when'],['Where','w_where'],['Why','w_why'],['How','w_how']].forEach(([a,b])=>kv(a,v(b)));kv('Dapatan AI',v('e_ai'));
+    head('2. Define');kv('Masalah',v('d_final'));
+    head('3. Ideate');kv('Idea Sprint',S.sprint.join('; ')||((S.games.g3a&&S.games.g3a.ideas)||[]).join('; '));kv('Idea dipilih',v('i_idea'));kv('Sebab',v('i_why'));kv('Ciri SCAMPER',[v('i_c1'),v('i_c2')].filter(Boolean).join('; '));kv('Kelemahan dibaiki',v('i_juri'));
+    head('4. Prototype');kv('Produk',[v('p_nama'),v('p_bentuk'),v('p_saiz'),v('p_warna'),v('p_bahan')].filter(Boolean).join(' · '));kv('Ciri utama',[v('p_c1'),v('p_c2'),v('p_c3')].filter(Boolean).join('; '));kv('Perubahan',v('p_ubah'));
+    const imgs=[[S.sketch,'Lakaran'],[S.image,'Gambar AI']].filter(i=>i[0]);
+    if(imgs.length){const w=(CW-6)/2;const h=w*2/3+6;need(h+4);imgs.forEach(([src,cap_],k)=>{try{const pr=doc.getImageProperties(src);const ih=Math.min(w*pr.height/pr.width,w);doc.addImage(src,'JPEG',M+k*(w+6),y,w,ih);doc.setFontSize(9);doc.setTextColor(70,102,122);doc.text(cap_,M+k*(w+6),y+ih+4)}catch(e){}});y+=h+4}
+    head('5. Test');kv('Penguji',v('t_siapa'));kv('Saya suka',v('t_suka'));kv('Saya risau',v('t_risau'));kv('Bagaimana kalau',v('t_kalau'));kv('Penambahbaikan',v('t_baiki'));
+    head('Pitch & Refleksi');kv('Cara berfungsi',v('h_cara'));kv('Keunikan',v('h_unik'));kv('Slogan',v('h_slogan'));kv('Skrip pitch',v('h_skrip'));
+    kv('Refleksi',v('r_ai')?`AI bantu aku dalam ${v('r_ai')}, tetapi aku sendiri yang ${v('r_saya')}.`:'');
+    if(doneCount()===7){const c=await drawCert();doc.addPage('a4','landscape');doc.addImage(c.toDataURL('image/jpeg',.92),'JPEG',10,10,277,277*1414/2000)}
+    const n=doc.getNumberOfPages();for(let k=1;k<=n;k++){doc.setPage(k);doc.setFontSize(8);doc.setTextColor(120,140,150);const pw=doc.internal.pageSize.getWidth(),ph=doc.internal.pageSize.getHeight();doc.text(`Jejak Inovator · ${certInfo().code} · halaman ${k}/${n}`,pw/2,ph-8,{align:'center'})}
+    await offerFile(fileBase()+'-Portfolio.pdf',doc.output('blob'),msg);
+  }finally{btn.disabled=false}
+}
+function portfolioHTML(){
+  const all=doneCount()===7,d=S.finishedAt?new Date(S.finishedAt):new Date();
+  const dateStr=d.toLocaleDateString('ms-MY',{day:'numeric',month:'long',year:'numeric'});
+  const code='JI-'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+String(total()).padStart(3,'0');
+  const row=(t,val)=>val?`<div><dt>${t}</dt><dd>${esc(val)}</dd></div>`:'';
+  return `<div class="view">
+   <div class="uhead"><div class="ubadge" style="background:var(--p6)">${ic('trophy')}</div><div style="min-width:0"><span class="eyebrow">Portfolio inovasi</span><h2>${esc(v('p_nama')||'Inovasi aku')}</h2></div></div>
+   ${all?`<section class="cert"><svg viewBox="0 0 60 60" class="seal" width="70" height="70" aria-hidden="true"><circle cx="30" cy="30" r="27" fill="#FFC63A"/><circle cx="30" cy="30" r="21" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 3"/><path d="m30 15 4.3 8.8 9.7 1.4-7 6.8 1.7 9.6L30 37.1l-8.7 4.5 1.7-9.6-7-6.8 9.7-1.4z" fill="#fff"/></svg>
+     <span class="eyebrow">Sijil Penyertaan</span><p>Dengan ini disahkan bahawa</p><p class="big">${esc(S.name||'Inovator')}</p>
+     <p>telah melengkapkan modul <b>Jejak Inovator: Design Thinking + AI</b><br>dengan inovasi <b>${esc(v('p_nama'))}</b> untuk ${esc(v('pengguna'))}.</p>
+     <p><span class="xp">${ic('star')}${total()}/${MAXALL()} markah · Tahap ${levelOf(total())}</span></p><small>${dateStr} · No. ${code}</small></section>
+`
+   :`<section class="card"><div class="row" style="gap:16px"><div class="medal off">${ic('lock')}</div><p><b>Sijil terbuka selepas 7 unit lengkap.</b> Kamu sudah siapkan ${doneCount()}/7.</p></div></section>`}
+   <section class="card dlcard"><div class="sub">${ic('download')}Muat turun</div>
+    <p class="note">${all?'Simpan sijil dan portfolio kamu untuk dihantar kepada guru.':'Portfolio boleh dimuat turun bila-bila masa. Sijil terbuka selepas 7 unit lengkap.'}</p>
+    <div class="row"><button class="btn accent" id="dlCert" ${all?'':'disabled'}>${ic('trophy')}Sijil (PNG)</button><button class="btn" id="dlPf">${ic('book')}Portfolio (PDF)</button></div>
+    <p class="note" id="dlMsg" hidden aria-live="polite"></p></section>
+   <section class="card"><div class="row" style="justify-content:space-between"><div class="sub">${ic('star')}Kad Markah</div><span class="xp">${total()}/${MAXALL()}</span></div><div style="overflow-x:auto"><table class="score"><thead><tr><th>Game</th><th>Unit</th><th>Markah</th></tr></thead><tbody>${Object.keys(GAMES).map(k=>{const ui=U.findIndex(u=>u.games.includes(k));return `<tr><td>${GAMES[k].title}</td><td>${U[ui].short}</td><td>${attempted(k)?S.games[k].score+'/'+gMax(k):'Belum dijawab'}</td></tr>`}).join('')}</tbody><tfoot><tr><td colspan="2">Jumlah</td><td>${total()}/${MAXALL()}</td></tr></tfoot></table></div><p class="note">Tahap ikut peratus markah: Perintis (bawah 30%), Pereka Muda (30–59%), Inovator (60–84%), Inovator Cemerlang (85% ke atas). Tunjuk kad markah atau sijil kepada guru untuk kiraan pemenang.</p></section>
+   <section class="card"><div class="sub">${ic('medal')}Lencana</div><div class="badges">${BADGES.map((b,i)=>`<div class="bdg"><div class="medal ${S.done[i]?'':'off'}" style="background:${U[i].color}">${ic(S.done[i]?U[i].icon:'lock')}</div>${b}</div>`).join('')}</div></section>
+   <section class="card pf"><div class="sub">${ic('book')}Perjalanan inovasi</div><dl>
+    ${row('Fokus',v('fokus'))}
+    ${row('Pengguna',cap(v('pengguna'))+(v('situasi')?' — '+v('situasi'):''))}
+    ${row('5W1H',[['Who','w_who'],['What','w_what'],['When','w_when'],['Where','w_where'],['Why','w_why'],['How','w_how']].filter(x=>v(x[1])).map(x=>x[0]+': '+v(x[1])).join(' · '))}
+    ${row('Penyataan masalah',v('d_final'))}${row('Idea Sprint',S.sprint.join('; '))}
+    ${row('Idea dipilih',v('i_idea')+(v('i_why')?' (kerana '+v('i_why')+')':''))}
+    ${row('Ciri SCAMPER',[v('i_c1'),v('i_c2')].filter(Boolean).join('; '))}${row('Kelemahan dibaiki',v('i_juri'))}
+    ${row('Produk',[v('p_nama'),v('p_bentuk'),v('p_saiz'),v('p_warna'),v('p_bahan')].filter(Boolean).join(' · '))}
+    ${row('Ciri utama',[v('p_c1'),v('p_c2'),v('p_c3')].filter(Boolean).join('; '))}</dl>
+    ${S.sketch||S.image?`<div class="imgs">${S.sketch?'<figure style="margin:0;display:grid;gap:6px"><img class="upimg" src="'+S.sketch+'" alt="Lakaran produk"><figcaption class="note">Lakaran</figcaption></figure>':''}${S.image?'<figure style="margin:0;display:grid;gap:6px"><img class="upimg" src="'+S.image+'" alt="Gambar produk daripada AI"><figcaption class="note">Gambar AI</figcaption></figure>':''}</div>`:''}
+    <dl>${row('Maklum balas ('+(v('t_siapa')||'-')+')',[v('t_suka')&&'Suka: '+v('t_suka'),v('t_risau')&&'Risau: '+v('t_risau'),v('t_kalau')&&'Bagaimana kalau: '+v('t_kalau')].filter(Boolean).join(' · '))}
+    ${row('Penambahbaikan',v('t_baiki'))}${row('Pitch',[v('h_cara'),v('h_unik')].filter(Boolean).join(' · '))}${row('Skrip pitch',v('h_skrip'))}${row('Slogan',v('h_slogan'))}
+    ${row('Refleksi',v('r_ai')?'AI bantu aku dalam '+v('r_ai')+', tetapi aku sendiri yang '+v('r_saya')+'.':'')}</dl>
+    <div class="row"><button class="btn" id="copyPf">${ic('copy')}Salin portfolio (teks)</button><span class="miss-item" id="pfOk" hidden style="color:var(--good)">${ic('check')}Disalin</span></div>
+    <textarea id="pfFallback" hidden readonly></textarea></section>
+   </div>`;
+}
+function portfolioText(){
+  return [`PORTFOLIO INOVASI – ${S.name||''}`,`Produk: ${v('p_nama')}`,`Fokus: ${v('fokus')}`,`Pengguna: ${v('pengguna')} (${v('situasi')})`,
+   `5W1H: Who ${v('w_who')}; What ${v('w_what')}; When ${v('w_when')}; Where ${v('w_where')}; Why ${v('w_why')}; How ${v('w_how')}`,
+   `Masalah: ${v('d_final')}`,`Idea Sprint: ${S.sprint.join('; ')}`,`Idea dipilih: ${v('i_idea')} – ${v('i_why')}`,`Ciri SCAMPER: ${v('i_c1')}; ${v('i_c2')}`,
+   `Produk: ${v('p_bentuk')}, ${v('p_saiz')}, ${v('p_warna')}, ${v('p_bahan')}; ciri: ${v('p_c1')}, ${v('p_c2')}, ${v('p_c3')}`,
+   `Maklum balas (${v('t_siapa')}): Suka ${v('t_suka')}; Risau ${v('t_risau')}; Bagaimana kalau ${v('t_kalau')}`,`Penambahbaikan: ${v('t_baiki')}`,
+   `Pitch: ${v('h_skrip')||v('h_cara')+' | '+v('h_unik')}`,`Slogan: ${v('h_slogan')}`,`Refleksi: AI bantu aku dalam ${v('r_ai')}, tetapi aku sendiri yang ${v('r_saya')}.`,`MARKAH: ${total()}/${MAXALL()} | `+Object.keys(GAMES).map(k=>GAMES[k].title+' '+(S.games[k]?S.games[k].score:0)+'/'+gMax(k)).join('; ')+` | Unit lengkap: ${doneCount()}/7`].join('\n');
+}
+function bindPortfolio(){
+  const msg=document.getElementById('dlMsg');
+  const dc=document.getElementById('dlCert');if(dc&&!dc.disabled)dc.onclick=()=>downloadCert(dc,msg);
+  const dp=document.getElementById('dlPf');if(dp)dp.onclick=()=>downloadPortfolio(dp,msg);
+  document.getElementById('copyPf').onclick=()=>{const t=portfolioText();const ok=()=>{document.getElementById('pfOk').hidden=false};
+    const fb=()=>{const ta=document.getElementById('pfFallback');ta.hidden=false;ta.value=t;ta.style.minHeight='200px';ta.select()};
+    try{navigator.clipboard.writeText(t).then(ok).catch(fb)}catch(e){fb()}};
+
+}
+
+if(S.sprintStarted&&!attempted('g3a')){const ideas=S.sprint.slice();S.games.g3a={score:Math.min(ideas.length,SPRINT_MAX)*PTS,ideas,max:SPRINT_MAX*PTS,at:new Date().toISOString()};S.sprintStarted=0;save()}
+route=parseHash();render();
+})();
+</script>
+
+</body>
+</html>
